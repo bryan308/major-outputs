@@ -1,0 +1,69 @@
+<!-- 
+
+
+
+Correctly integrates both audio and video elements with full functionality across multiple browsers and devices.
+Effectively uses custom controls, providing a seamless user experience (e.g., play, pause, volume).
+The media adjusts smoothly across different screen sizes and devices, maintaining high-quality playback.
+Effectively uses multiple source formats (e.g., MP4, Ogg, WebM) ensuring cross-browser compatibility.
+Provides an intuitive and accessible media experience, including features like captions or subtitles.
+
+
+
+Directions: Enhancing User Experience with Audio
+Content. Construct a web page that uses the <audio> tag to
+enhance the user experience with audio content.
+
+
+Instructions:
+
+
+Task
+1: Create an HTML file
+named Laboratory3.html.
+
+
+Task
+2: Embed an audio file
+using the <audio> tag. Provide multiple audio sources (.mp3, .ogg, etc.)
+to ensure cross-browser compatibility.
+
+
+Task
+3: Add descriptive text or
+captions next to the audio element to guide users through interacting with the
+content.
+
+
+Task
+4: Test the audio playback
+on different browsers and devices to ensure it functions correctly.
+
+
+Task
+5: Style the custom controls using CSS to make them visually appealing and user-friendly.
+
+Outcomes. This exercise will provide students with
+hands-on experience using HTML <audio> elements to play audio content effectively, thus improving their user experience. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <title>Laboratory 3</title>
+  </head>
+  <body>
+    <div class="container">
+      <audio class="custom-audio" controls loop>
+        <source src="assets/Fallen_Down.mp3" type="audio/mp3">
+        <source src="assets/Fallen_Down.ogg" type="audio/ogg">
+        <source src="assets/Fallen_Down.wav" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+      <h1>Click the play button to listen to the audio clip.</h1>
+      <h2>Adjust the volume using the controls.</h2>
+    </div>
+  </body>
+</html>

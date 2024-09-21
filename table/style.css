@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+	background: #fafafa;
+	color: #171717;
+	font-family: 'Poppins', sans-serif;
+}
+
+table,
+th,
+tr {
+	border-collapse: collapse;
+}
+
+table {
+	background-color: white;
+	margin: 10rem auto;
+}
+
+caption {
+	color: #171717;
+	font-family: 'Lexend', sans-serif;
+	text-transform: uppercase;
+	font-size: 3rem;
+	font-weight: 700;
+	margin-bottom: 3rem;
+}
+
+thead {
+	background-color: #edf2fb;
+}
+
+th {
+	color: #171717;
+	padding: 0.5rem 1rem;
+	border-bottom: 2px solid #c9c9c9;
+}
+
+tbody {
+	border-bottom: 1px solid #c9c9c9;
+}
+
+tr {
+	border-radius: 12px;
+}
+
+tr:nth-child(even) {
+	background-color: #e7ecef80;
+}
+
+tr:hover {
+	background-color: #ebebeb;
+}
+
+td {
+	color: #666;
+	padding: 0.75rem 1rem;
+}
+
+.stu-id {
+	font-weight: 600;
+}
+
+.age {
+	text-align: center;
+}
+
+.email {
+	color: #0072f5;
+	text-decoration: underline;
+}

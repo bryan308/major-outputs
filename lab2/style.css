@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	background-color: #fafafa;
+	color: #171717;
+}
+
+form {
+	margin: 5rem auto;
+	max-width: 330px;
+	padding: 1rem;
+	border-radius: 8px;
+	border: 2px solid #ebebeb;
+	background-color: #fff;
+}
+
+h2 {
+	text-align: center;
+}
+
+form .form-group:nth-child(1) {
+	margin: 0;
+}
+
+textarea {
+	resize: none;
+	width: 100%;
+}
+
+button {
+	font-weight: 500;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	color: white;
+	margin-top: 1rem;
+	padding: 0.5rem 1rem;
+	width: 100%;
+	border-radius: 6px;
+	border: none;
+	background-color: #0072f5;
+}
+
+.form-group {
+	margin: 1rem 0;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='date'] {
+	width: 100%;
+}
+
+label {
+	display: block;
+	margin-right: 0.5rem;
+	font-weight: 500;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+}
+
+a {
+	color: #52aeff;
+	text-decoration: underline;
+}
+
+a:active {
+	color: red;
+}
+
+label[for='terms'] {
+	display: inline;
+	font-size: 0.75rem;
+	line-height: 1rem;
+	width: 100%;
+	margin-left: 0.25rem;
+	user-select: none;
+}
+
+textarea::placeholder,
+input::placeholder {
+	color: #cbcbcb;
+}
+
+textarea,
+select,
+input {
+	padding: 0.5rem;
+	background-color: #fafafa;
+	border: 1px solid #ebebeb;
+	border-radius: 6px;
+	color: #666;
+}
+
+textarea:hover,
+select:hover,
+input:hover {
+	background-color: #f7f7f7;
+	border: 1px solid #c9c9c9;
+}
+
+textarea:focus,
+select:focus,
+input:focus {
+	outline: #cce6ff solid 2px;
+}
+
+input[type='radio']:focus,
+input[type='checkbox']:focus {
+	outline: none;
+}
+
+input[type='radio'],
+label[for='male'],
+label[for='female'] {
+	display: inline;
+	font-weight: 400;
+	color: #666;
+}

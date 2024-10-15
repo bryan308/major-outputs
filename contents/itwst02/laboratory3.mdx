@@ -1,0 +1,148 @@
+---
+title: Laboratory 3
+---
+
+**score**: 100/100
+
+**directions**: 
+
+Enhancing User Experience with Audio Content. Construct a web page that uses the `<audio>` tag to enhance the user experience with audio content.
+
+**instructions**:
+- **task 1**: Create an HTML file named Laboratory3.html.
+- **task 2**: Embed an audio file using the `<audio>` tag. Provide multiple audio sources (.mp3, .ogg, etc.) to ensure cross-browser compatibility.
+- **task 3**: Add descriptive text or captions next to the audio element to guide users through interacting with the content.
+- **task 4**: Test the audio playback on different browsers and devices to ensure it functions correctly.
+- **task 5**: Style the custom controls using CSS to make them visually appealing and user-friendly.
+
+**outcomes**
+
+This exercise will provide students with hands-on experience using HTML `<audio>` elements to play audio content effectively, thus improving their user experience.
+
+**file structure**
+
+<Files>
+  <Folder name="root-folder" defaultOpen>
+    <Folder name="assets" defaultOpen>
+      <File name="Fallen_Down.mp3" />
+      <File name="Fallen_Down.ogg" />
+      <File name="Fallen_Down.wav" />
+      <File name="undertale_fallendown.jpg" />
+    </Folder>
+    <File name="Laboratory3.html" />
+    <File name="style.css" />
+  </Folder>
+</Files>
+
+**code**
+
+<Tabs items={['html', 'css']}>
+
+<Tab value="html">
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Laboratory 3</title>
+  </head>
+  <body>
+    <div class="container">
+      <audio class="custom-audio" controls loop>
+        <source src="assets/Fallen_Down.mp3" type="audio/mp3">
+        <source src="assets/Fallen_Down.ogg" type="audio/ogg">
+        <source src="assets/Fallen_Down.wav" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+      <p>Fallen Down - Toby Fox</p>
+      <h1>Click the play button to listen to the audio clip.</h1>
+      <h2>Adjust the volume using the controls.</h2>
+    </div>
+  </body>
+</html>
+```
+
+</Tab>
+
+<Tab value="css">
+
+```css
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+body {
+	font-family: "VT323", monospace;
+	background: #010101 url("assets/undertale_fallendown.jpg") no-repeat center bottom;
+	background-size: cover;
+	margin: 0;
+	height: 100vh;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.container {
+	margin: 1rem auto 0 auto;
+	max-width: 60rem;
+	padding: 11rem 2rem 0 2rem;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: 15px;
+}
+
+.custom-audio {
+	margin: 2rem auto;
+	width: 100%;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.custom-audio::-webkit-media-controls-panel {
+	background-color: rgb(237, 237, 237);
+}
+
+.custom-audio::-webkit-media-controls-mute-button {
+	background-color: rgb(229, 72, 77);
+	border-radius: 50%;
+}
+
+.custom-audio::-webkit-media-controls-play-button {
+	background-color: rgb(255, 153, 10);
+	border-radius: 50%;
+}
+
+.custom-audio::-webkit-media-controls-play-button:hover {
+	background-color: rgb(255, 167, 43);
+}
+
+.custom-audio::-webkit-media-controls-time-remaining-display,
+.custom-audio::-webkit-media-controls-current-time-display {
+	color: rgb(10, 10, 10);
+	font-size: 1rem;
+}
+
+p {
+	font-size: 1.5rem;
+}
+
+h1 {
+	color: rgb(229, 72, 77);
+	font-size: 2.5rem;
+	margin-bottom: 1rem;
+}
+
+h2 {
+	color: rgb(255, 153, 10);
+	font-size: 1.5rem;
+}
+```
+
+</Tab>
+
+</Tabs>
+
+**output**
+
+<Image src="/02/lab3.png" alt="Laboratory 3" width={1920} height={1079} />

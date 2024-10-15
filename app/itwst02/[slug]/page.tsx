@@ -1,5 +1,5 @@
 import React from "react"
-import { allItwst01s } from "content-collections"
+import { allItwst02s } from "content-collections"
 import { MDXContent } from "@content-collections/mdx/react"
 import { notFound } from "next/navigation"
 import Link from "next/link"
@@ -13,20 +13,20 @@ import { File, Folder, Files } from "fumadocs-ui/components/files"
 import { Tab, Tabs } from "fumadocs-ui/components/tabs"
 
 export default async function Page({ params }: { params: { slug: string } }) {
-	const itwst01 = allItwst01s.find((lab) => lab._meta.path === params.slug)
+	const itwst02 = allItwst02s.find((lab) => lab._meta.path === params.slug)
 
 	// console.log(params.slug)
 
-	if (!itwst01) {
+	if (!itwst02) {
 		return notFound()
 	}
 
 	return (
 		<>
-			<Link href="/itwst01">&larr; back</Link>
-			<h2 className="text-lg tracking-tighter my-6 font-semibold">ITWST-01 / {itwst01.title}</h2>
+			<Link href="/itwst02">&larr; back</Link>
+			<h2 className="text-lg tracking-tighter my-6 font-semibold">ITWST-02 / {itwst02.title}</h2>
 			<MDXContent
-				code={itwst01.mdx}
+				code={itwst02.mdx}
 				components={{
 					pre: ({
 						// ref: _ref,
@@ -64,14 +64,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
 }
 
 export const generateStaticParams = async () => {
-	return allItwst01s.map((lab) => ({ slug: lab._meta.path }))
+	return allItwst02s.map((lab) => ({ slug: lab._meta.path }))
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
-	const page = allItwst01s.find((lab) => lab._meta.path === params.slug)
+	const page = allItwst02s.find((lab) => lab._meta.path === params.slug)
 
 	return {
-		title: `${page?.title} | ITWST-01`,
+		title: `${page?.title} | ITWST-02`,
 		// description: page.data.description,
 		// openGraph: {
 		// 	title: page.data.title,

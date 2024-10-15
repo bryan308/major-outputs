@@ -1,0 +1,124 @@
+---
+title: Laboratory 4
+---
+
+**score**: 100/100
+
+**directions**: 
+
+Design and implement a web page that effectively integrates the `<video>` tag to enhance the user experience through multimedia content.
+
+**instructions**:
+- **task 1**: Create an HTML file named Laboratory4.html.
+- **task 2**: Embed a video file using the `<video>` tag. Provide multiple video sources (.mp4, .webm, etc.) to ensure cross-browser compatibility.
+- **task 3**: Include descriptive text or captions below the video element to provide context or additional information.
+- **task 4**: Test the video playback on different browsers and devices to ensure functionality.
+- **task 5**: Style the custom controls using CSS to ensure they are visually appealing and user-friendly.
+
+**outcomes**
+
+This exercise will provide students with hands-on experience integrating HTML `<video>` elements to enhance web page content using video, thus improving the user experience.
+
+**file structure**
+
+<Files>
+  <Folder name="root-folder" defaultOpen>
+    <Folder name="assets" defaultOpen>
+      <File name="endgame.mp4" />
+      <File name="endgame.ogg" />
+      <File name="endgame.webm" />
+    </Folder>
+    <File name="Laboratory4.html" />
+    <File name="style.css" />
+  </Folder>
+</Files>
+
+**code**
+
+<Tabs items={['html', 'css']}>
+
+<Tab value="html">
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Laboratory 4</title>
+  </head>
+  <body>
+    <div class="video-container">
+      <video controls loop>
+        <source src="assets/endgame.mp4" type="video/mp4" />
+        <source src="assets/endgame.ogg" type="video/ogg" />
+        <source src="assets/endgame.webm" type="video/webm" />
+        Iron Man's heroic sacrifice in Avengers: Endgame
+      </video>
+      <h1>
+        <span>Iron</span> <span>Man's</span> heroic sacrifice in <span>Avengers: Endgame</span>
+      </h1>
+    </div>
+  </body>
+</html>
+```
+
+</Tab>
+
+<Tab value="css">
+
+```css
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+
+body {
+	background-color: rgb(1, 1, 1);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100dvh;
+	margin: 0;
+}
+
+.video-container {
+	margin: 1rem;
+	max-width: 60rem;
+	text-align: center;
+	background-color: rgba(1, 1, 1, 0.7);
+	border-radius: 16px;
+	box-shadow: 0 4px 20px rgba(1, 1, 1, 0.5);
+}
+
+.video-container video {
+  max-width: 100%;
+  border-radius: 16px;
+  border: 3px solid #8E4EC6;
+}
+
+.video-container h1 {
+	font-family: "Bangers", cursive;
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+h1 span:nth-child(1) {
+  color: red;
+}
+
+h1 span:nth-child(2) {
+  color: #FFB224;
+}
+
+h1 span:nth-child(3) {
+  color: #8E4EC6;
+}
+```
+
+</Tab>
+
+</Tabs>
+
+**output**
+
+<Image src="/02/lab4.png" alt="Laboratory 4" width={1920} height={1079} />

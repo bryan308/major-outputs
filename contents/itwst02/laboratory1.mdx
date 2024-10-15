@@ -1,0 +1,185 @@
+---
+title: Laboratory 1
+---
+
+**score**: 100/100
+
+**instructions**
+
+Create a student directory table to display information about students using HTML tables and apply basic styling using CSS. Upload the screenshots of (a) source code and (b) output to the Google Classroom.
+
+**file structure**
+
+<Files>
+  <Folder name="root-folder" defaultOpen>
+    <File name="index.html" />
+    <File name="style.css" />
+  </Folder>
+</Files>
+
+**code**
+
+<Tabs items={['html', 'css']}>
+
+<Tab value="html">
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>Laboratory 1</title>
+  </head>
+  <body>
+    <table>
+      <caption>Students Directory</caption>
+      <thead>
+        <tr>
+          <th>Student ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="stu-id">SUM2023-02784</td>
+          <td>Chollo F. Dela Cruz</td>
+          <td class="age">19</td>
+          <td class="email">delacruzchollo0@gmail.com</td>
+        </tr>
+        <tr>
+          <td class="stu-id">SUM2023-01001</td>
+          <td>Gabrielle A. Añasco</td>
+          <td class="age">21</td>
+          <td class="email">G.anasco11@gmail.com</td>
+        </tr>
+        <tr>
+          <td class="stu-id">SUM2023-00985</td>
+          <td>Charles Benedict A. Leodones</td>
+          <td class="age">18</td>
+          <td class="email">charlebenedictabay@gmail.com</td>
+        </tr>
+        <tr>
+          <td class="stu-id">SUM2023-00960</td>
+          <td>Bernard L. Domingo</td>
+          <td class="age">21</td>
+          <td class="email">domingobernard0711@gmail.com</td>
+        </tr>
+        <tr>
+          <td class="stu-id">SUM2023-00934</td>
+          <td>Kenji B. Veneracion</td>
+          <td class="age">18</td>
+          <td class="email">Kenjiveneracion@gmail.com</td>
+        </tr>
+        <tr>
+          <td class="stu-id">SUM2023-00975</td>
+          <td>Renz M. Censon</td>
+          <td class="age">19</td>
+          <td class="email">renzcenson0207@gmail.com</td>
+        </tr>
+        <tr>
+          <td class="stu-id">SUM2023-00961</td>
+          <td>Rainiel N. Sevilla</td>
+          <td class="age">19</td>
+          <td class="email">rainielsevilla27@gmail.com</td>
+        </tr>
+        <tr>
+          <td class="stu-id">SUM2023-00933</td>
+          <td>John Paul C. Laureano</td>
+          <td class="age">19</td>
+          <td class="email">johnpaul022005123@gmail.com</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+```
+
+</Tab>
+
+<Tab value="css">
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+	background: #fafafa;
+	color: #171717;
+	font-family: 'Poppins', sans-serif;
+}
+
+table,
+th,
+tr {
+	border-collapse: collapse;
+}
+
+table {
+	background-color: white;
+	margin: 10rem auto;
+}
+
+caption {
+	color: #171717;
+	font-family: 'Lexend', sans-serif;
+	text-transform: uppercase;
+	font-size: 3rem;
+	font-weight: 700;
+	margin-bottom: 3rem;
+}
+
+thead {
+	background-color: #edf2fb;
+}
+
+th {
+	color: #171717;
+	padding: 0.5rem 1rem;
+	border-bottom: 2px solid #c9c9c9;
+}
+
+tbody {
+	border-bottom: 1px solid #c9c9c9;
+}
+
+tr {
+	border-radius: 12px;
+}
+
+tr:nth-child(even) {
+	background-color: #e7ecef80;
+}
+
+tr:hover {
+	background-color: #ebebeb;
+}
+
+td {
+	color: #666;
+	padding: 0.75rem 1rem;
+}
+
+.stu-id {
+	font-weight: 600;
+}
+
+.age {
+	text-align: center;
+}
+
+.email {
+	color: #0072f5;
+	text-decoration: underline;
+}
+```
+
+</Tab>
+
+</Tabs>
+
+**output**
+
+<Image src="/02/lab1.png" alt="Laboratory 1" width={1690} height={1067} />

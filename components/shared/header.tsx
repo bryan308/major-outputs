@@ -21,12 +21,12 @@ export const Header = () => {
 				</Link>
 				/{" "}
 				<Link
-					href="https://x.com/cdrcangulo"
+					href="https://cdrcangulo.vercel.app"
 					target="_blank"
 					rel="noreferrer"
 				>
-					twitter
-				</Link>{" "}
+					portfolio
+				</Link>
 			</div>
 		</header>
 	)

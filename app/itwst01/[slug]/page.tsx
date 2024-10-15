@@ -54,3 +54,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
 		</>
 	)
 }
+
+export const generateStaticParams = async () => {
+	const labs = allItwst01s
+	return labs.map((lab) => ({ slug: lab._meta.path }))
+}

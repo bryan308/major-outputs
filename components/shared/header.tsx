@@ -28,6 +28,7 @@ export const Header = () => {
 				>
 					portfolio
 				</Link>
+				/{" "}
 				<ModeToggle />
 			</div>
 		</header>

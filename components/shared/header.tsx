@@ -1,5 +1,6 @@
 import React from "react"
 import Link from "next/link"
+import { ModeToggle } from "./mode-toggle"
 
 export const Header = () => {
 	return (
@@ -27,6 +28,7 @@ export const Header = () => {
 				>
 					portfolio
 				</Link>
+				<ModeToggle />
 			</div>
 		</header>
 	)

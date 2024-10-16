@@ -68,7 +68,7 @@
 		@apply bg-background text-foreground;
 	}
 	a {
-		@apply underline text-blue-600;
+		@apply underline text-[#0062D1] dark:text-[#0091FF];
 	}
 
 	p {

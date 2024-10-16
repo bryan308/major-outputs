@@ -17,7 +17,7 @@ export function ModeToggle() {
 			className="size-4"
 			onClick={() => setTheme(isLight ? "dark" : "light")}
 		>
-			{!isLight ? (
+			{isLight ? (
 				<SunIcon className="text-foreground size-12 md:size-5 transition-transform" />
 			) : (
 				<MoonIcon className="text-foreground size-12 md:size-5 transition-transform" />

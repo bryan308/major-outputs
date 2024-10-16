@@ -5,7 +5,7 @@ export default function Labs() {
 	return (
 		<>
 			<Link href="/">&larr; back</Link>
-			<div className="grid grid-cols-2 gap-4 mt-10">
+			<div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-10">
 				{allItwst01s
 					.sort((a, b) => {
 						const getNumber = (title: string) => parseInt(title.split("Laboratory ")[1], 10)

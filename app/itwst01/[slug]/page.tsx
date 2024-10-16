@@ -42,7 +42,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					Image: (props) => (
 						<ImageZoom
 							{...props}
-							className="w-full max-w-2xl block mx-auto mt-4"
+							className="w-full block mx-auto mt-4 rounded-lg"
 						/>
 					),
 					File,

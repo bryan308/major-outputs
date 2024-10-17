@@ -1,0 +1,53 @@
+---
+title: Case Problem 4
+---
+
+**score**: 28/30
+
+Using your Word Problem on Case No. 3, accept the user input using the scanner, and use each input on the computation. Present your problem's solution using appropriate Java Structure.
+
+**rubric**:
+
+- correctness and structure of the source code 15pts
+- correctness of the output 15pts
+**TOTAL** 30pts
+
+Prepare to demonstrate your case in the class. You may write your code or simulate on your mobile or online compiler, in the absence of personal laptop. Save your file as: `Case4Surname.java`.
+
+Upload your output in pdf format.
+
+```java
+import java.util.Scanner;
+
+public class Case4Angulo {
+  public static void main(String[] args) {
+
+    final float CAKE_PRICE = 350.75f; // Price of one cake
+    final float TAX_RATE = 0.12f;     // Tax rate 12%
+
+    // Create a Scanner object to accept user input
+    Scanner scanner = new Scanner(System.in);
+
+    // Ask the user for the quantity of cakes
+    System.out.print("Enter the number of cakes: ");
+    int quantity = scanner.nextInt();
+
+    // Calculate the subtotal, tax amount, and total cost
+    float subtotal = CAKE_PRICE * quantity;
+    float taxAmount = subtotal * TAX_RATE;
+    float totalCost = subtotal + taxAmount;
+
+    // Display the results
+    System.out.println("\nPrice per cake: " + CAKE_PRICE);
+    System.out.println("Quantity: " + quantity);
+    System.out.println("Subtotal: " + subtotal);
+    System.out.println("Tax amount: " + taxAmount);
+    System.out.println("Total Cost: " + totalCost);
+
+    // Close the scanner
+    scanner.close();
+  }
+}
+```
+
+<FileCard fileName="Case4Angulo.pdf" image="" filePath="/files/Case4Angulo.pdf" />

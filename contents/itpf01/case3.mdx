@@ -1,0 +1,51 @@
+---
+title: Case Problem 3
+---
+
+**score**: 48/50
+
+Write a word problem that will showcase (limited to) the (1) use of proper data type, (2) variable and constant declaration, (3) use of arithmetic operation. Present your problem's solution using appropriate Java Structure.
+
+**Rubric**:
+- complexity of the problem 15pts
+- originality of the problem 10pts
+- correctness of the source code 15pts
+- correctness of the output 10pts
+
+**TOTAL** 50pts
+
+Prepare to demonstrate your case in the class. You may write your code or simulate on your mobile or online compiler, in the absence of personal laptop. Save your file as: `Case3Surname.java`.
+
+Submit the screenshot of your code and output in a pdf format.
+
+**code**
+
+```java
+public class Case3Angulo {
+  public static void main(String[] args) {
+
+    final float CAKE_PRICE = 350.75f; // Price of one cake
+    final float TAX_RATE = 0.12f; // tax rate 12%
+
+    // number of cakse bought
+    int quantity = 3;
+
+    // total price of cake without tax
+    float subtotal = CAKE_PRICE * quantity;
+
+    // get tax amount
+    float taxAmount = subtotal * TAX_RATE;
+
+    // get total cost
+    float totalCost = subtotal + taxAmount;
+
+    System.out.println("\nPrice per cake: " + CAKE_PRICE);
+    System.out.println("Quantity: " + quantity);
+    System.out.println("Subtotal: " + subtotal);
+    System.out.println("Tax amount: " + taxAmount);
+    System.out.println("Total Cost: " + totalCost);
+  }
+}
+```
+
+<FileCard fileName="Case3Angulo.pdf" image="" filePath="/files/Case3Angulo.pdf" />

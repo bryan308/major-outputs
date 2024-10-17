@@ -4,7 +4,13 @@ import Link from "next/link"
 export default function Home() {
 	return (
 		<>
-			<h2 className="text-lg tracking-tighter font-semibold">ITWST-01</h2>
+			<h2 className="text-lg tracking-tighter font-semibold">ITWST-01 / AY 2023-2024</h2>
+			<p className="mb-4">
+				<span className="font-semibold">Teacher</span>: Rose Anne G. Cochanco
+			</p>
+			<p className="mb-4">
+				<span className="font-semibold">Section</span>: 1E
+			</p>
 			<Tabs defaultValue="laboratories">
 				<TabsList>
 					<TabsTrigger value="laboratories">laboratories</TabsTrigger>
@@ -32,8 +38,14 @@ export default function Home() {
 					</div>
 				</TabsContent>
 			</Tabs>
-			<div className="my-20" />
-			<h2 className="text-lg tracking-tighter font-semibold">ITWST-02</h2>
+			<hr className="my-10" />
+			<h2 className="text-lg tracking-tighter font-semibold">ITWST-02 / AY 2024-2025</h2>
+			<p className="mb-4">
+				<span className="font-semibold">Teacher</span>: Rose Anne G. Cochanco
+			</p>
+			<p className="mb-4">
+				<span className="font-semibold">Section</span>: 2A
+			</p>
 			<Tabs defaultValue="laboratories">
 				<TabsList>
 					<TabsTrigger value="laboratories">laboratories</TabsTrigger>

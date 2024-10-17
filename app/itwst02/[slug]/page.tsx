@@ -5,6 +5,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Separator } from "@/components/ui/separator"
 import { Metadata } from "next"
+import FileCard from "@/components/shared/file-card"
 
 // fumadocs components
 import { ImageZoom } from "fumadocs-ui/components/image-zoom"
@@ -45,6 +46,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 							className="w-full block mx-auto mt-4 rounded-lg"
 						/>
 					),
+					FileCard,
 					File,
 					Folder,
 					Files,

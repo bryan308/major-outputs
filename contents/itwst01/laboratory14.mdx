@@ -4,9 +4,30 @@ title: Laboratory 14
 
 **score**: 100/100
 
+**directions**:
+
+Please upload the screenshot of the source codes and outputs of the following:
+
+- lab14.css
+- laboratory14.html
+- laboratory14-chrome.html
+- laboratory14-firefox.html
+- laboratory14-edge.html
+- laboratory14-maxthon.html
+- laboratory14-opera.html
+- laboratory14-safari.html
+
+Correct outputs submitted until the following times will have the corresponding grades.
+
+- on or before 3:30pm - 100
+- 3:31pm - 5:00pm - 90
+- 5:01pm - 7:00pm - 80
+- 7:01pm - 9:00pm - 70
+- 9:01pm - 11:59pm - 50
+
 **file structure**
 
-<Files className="mt-4">
+<Files class="mt-4">
   <Folder name="laboratory14" defaultOpen>
     <Folder name="images">
       <File name="chrome.png" />
@@ -23,15 +44,11 @@ title: Laboratory 14
     <File name="laboratory14-maxthon.html" />
     <File name="laboratory14-opera.html" />
     <File name="laboratory14-safari.html" />
-    <File name="style.css" />
+    <File name="lab14.css" />
   </Folder>
 </Files>
 
 **code** / **output**
-
-🚧 ... 🚧
-
-{/* 
 
 <Tabs groupId="language" items={['index', 'css', 'chrome', 'edge', 'firefox', 'maxthon', 'opera', 'safari']}>
 <Tab value="index">
@@ -40,26 +57,27 @@ title: Laboratory 14
 <html>
   <head>
     <title>Laboratory 14</title>
+    <link rel="stylesheet" type="text/css" href="lab14.css" />
   </head>
   <body>
-    <h1 style="font-family: Arial, sans-serif">Most Popular Web Browsers</h1>
+    <h1 class="mainheading">Most Popular Web Browsers</h1>
     <a href="laboratory14-chrome.html">
-      <img src="images/chrome.png" alt="Google Chrome" width="150" height="150" />
+      <img class="logosmall" src="images/chrome.png" alt="Google Chrome" />
     </a>
     <a href="laboratory14-edge.html">
-      <img src="images/edge.png" alt="Microsoft Edge" width="150" height="150" />
+      <img class="logosmall" src="images/edge.png" alt="Microsoft Edge" />
     </a>
     <a href="laboratory14-firefox.html">
-      <img src="images/firefox.png" alt="Firefox" width="150" height="150" />
+      <img class="logosmall" src="images/firefox.png" alt="Firefox" />
     </a>
     <a href="laboratory14-maxthon.html">
-      <img src="images/maxthon.png" alt="Maxthon" width="150" height="150" />
+      <img class="logosmall" src="images/maxthon.png" alt="Maxthon" />
     </a>
     <a href="laboratory14-opera.html">
-      <img src="images/opera.png" alt="Opera" width="150" height="150" />
+      <img class="logosmall" src="images/opera.png" alt="Opera" />
     </a>
     <a href="laboratory14-safari.html">
-      <img src="images/safari.png" alt="Safari" width="150" height="150" />
+      <img class="logosmall" src="images/safari.png" alt="Safari" />
     </a>
   </body>
 </html>
@@ -71,8 +89,35 @@ title: Laboratory 14
 <Tab value="css">
 
 ```css
-* {
-  
+#mainheading {
+  font-family: Arial;
+}
+
+.logosmall {
+  width: 150px;
+  height: 150px;
+}
+
+#linkheading {
+  text-align: center;
+  font-family: 'Century gothic';
+}
+
+.logolarge {
+  display: block;
+  margin: auto;
+  width: 300px;
+  height: 300px;
+}
+
+p {
+  text-align: justify;
+  text-indent: 50px;
+  font-family: Verdana;
+}
+
+.center {
+  text-align: center;
 }
 ```
 
@@ -83,15 +128,16 @@ title: Laboratory 14
 <html>
   <head>
     <title>Google Chrome</title>
+    <link rel="stylesheet" type="text/css" href="lab14.css" />
   </head>
   <body>
-    <h1 style="text-align: center; font-family: 'century gothic', sans-serif">Google Chrome</h1>
+    <h1 class="linkheading">Google Chrome</h1>
     <img
+      class="logolarge"
       src="images/chrome.png"
       alt="Google Chrome icon"
-      style="display: block; margin: auto; width: 300px; height: 300px"
     />
-    <p style="text-align: justify; text-indent: 50px; font-family: Verdana, sans-serif">
+    <p>
       <b>Google Chrome</b>, developed by the tech giant <b>Google</b>, is a highly popular web
       browser. Launched in 2008, it quickly gained prominence due to its minimalist design and
       exceptional speed. Based on the open-source Chromium project, <b>Chrome</b> supports a vast
@@ -99,7 +145,7 @@ title: Laboratory 14
       Its synchronization with <b>Google</b> services and continuous updates solidify its position
       as a leading choice for users across various platforms.
     </p>
-    <h4 style="text-align: center">
+    <h4 class="center">
       <a href="laboratory14.html">Back to main page</a>
     </h4>
   </body> 
@@ -116,15 +162,16 @@ title: Laboratory 14
 <html>
   <head>
     <title>Microsoft Edge</title>
+    <link rel="stylesheet" type="text/css" href="lab14.css" />
   </head>
   <body>
-    <h1 style="text-align: center; font-family: 'century gothic', sans-serif">Microsoft Edge</h1>
+    <h1 class="linkheading">Microsoft Edge</h1>
     <img
+      class="logolarge"
       src="images/edge.png"
       alt="Microsoft Edge icon"
-      style="display: block; margin: auto; width: 300px; height: 300px"
     />
-    <p style="text-align: justify; text-indent: 50px; font-family: Verdana, sans-serif">
+    <p>
       <b>Microsoft Edge</b>, developed by <b>Microsoft</b>, represents a significant shift from the
       older Internet Explorer. The browser, built on the Chromium engine, ensures compatibility with
       a wide range of websites while offering enhanced speed and security. <b>Edge</b> integrates
@@ -132,7 +179,7 @@ title: Laboratory 14
       <b>Microsoft's</b> commitment to refining the browsing experience, evident in regular updates,
       positions <b>Edge</b> as a competitive and modern browser.
     </p>
-    <h4 style="text-align: center">
+    <h4 class="center">
       <a href="laboratory14.html">Back to main page</a>
     </h4>
   </body>
@@ -150,15 +197,16 @@ title: Laboratory 14
 <html>
   <head>
     <title>Mozilla Firefox</title>
+    <link rel="stylesheet" type="text/css" href="lab14.css" />
   </head>
   <body>
-    <h1 style="text-align: center; font-family: 'century gothic', sans -serif">Mozilla Firefox</h1>
+    <h1 class="linkheading">Mozilla Firefox</h1>
     <img
+      class="logolarge"
       src="images/firefox.png"
       alt="Mozilla Firefox icon"
-      style="display: block; margin: auto; width: 300px; height: 300px"
     />
-    <p style="text-align: justify; text-indent: 50px; font-family: Verdana, sans-serif">
+    <p>
       <b>Mozilla Firefox</b>, developed by the non-profit <b>Mozilla Foundation</b>, stands out as a
       champion of user privacy and an open web. Launched in 2002, <b>Firefox</b> emphasizes
       customization through a rich ecosysten of extensions. Its privacy-centric features, such as
@@ -167,7 +215,7 @@ title: Laboratory 14
       reinforces <b>Firefox's</b> role as a browser of choice for those valuing user agency and
       online freedom.
     </p>
-    <h4 style="text-align: center">
+    <h4 class="center">
       <a href="laboratory14.html">Back to main page</a>
     </h4>
   </body>
@@ -185,15 +233,16 @@ title: Laboratory 14
 <html>
   <head>
     <title>Maxthon</title>
+    <link rel="stylesheet" type="text/css" href="lab14.css" />
   </head>
   <body>
     <h1 style="text-align: center; font-family: 'century gothic', sans-serif;">Maxthon</h1>
     <img
+      class="logolarge"
       src="images/maxthon.png"
       alt="Maxthon icon"
-      style="display: block; margin: auto; width: 300px; height: 300px"
     />
-    <p style="text-align: justify; text-indent: 50px; font-family: Verdana, sans-serif">
+    <p>
       <b>Maxthon</b>, developed by <b>Maxthon Ltd</b>, is a web browser with a unique approach to
       browsing technology. Originating from Beijing, China, <b>Maxthon</b> incorporates dual-engine
       technology, utilizing both Webkit and Trident engines. This hybrid approach aims to provide
@@ -219,15 +268,16 @@ title: Laboratory 14
 <html>
   <head>
     <title>Opera</title>
+    <link rel="stylesheet" type="text/css" href="lab14.css" />
   </head>
   <body>
-    <h1 style="text-align: center; font-family: 'century gothic', sans -serif">Opera</h1>
+    <h1 class="linkheading">Opera</h1>
     <img
+      class="logolarge"
       src="images/opera.png"
       alt="Opera icon"
-      style="display: block; margin: auto; width: 300px; height: 300px"
     />
-    <p style="text-align: justify; text-indent: 50px; font-family: Verdana, sans-serif">
+    <p>
       <b>Opera</b>, developed by <b>Opera Software</b>, is a browser celebrated for its speed and
       innovation. First introduced in 1995, <b>Opera</b> has consistently pushed boundaries in the
       browser landscape. Noteworthy features include a built-in ad-blocker, a free VPN for enhanced
@@ -235,7 +285,7 @@ title: Laboratory 14
       user-friendly functionalities and a focus on staying ahead in technology trends continue to make
       it a browser of choice for those seeking a feature-rich and efficient web experience.
     </p>
-    <h4 style="text-align: center">
+    <h4 class="center">
       <a href="laboratory14.html">Back to main page</a>
     </h4>
   </body>
@@ -253,15 +303,16 @@ title: Laboratory 14
 <html>
   <head>
     <title>Safari</title>
+    <link rel="stylesheet" type="text/css" href="lab14.css" />
   </head>
   <body>
-    <h1 style="text-align: center; font-family: 'century gothic', sans-serif">Safari</h1>
+    <h1 class="linkheading">Safari</h1>
     <img
+      class="logolarge"
       src="images/safari.png"
       alt="Safari icon"
-      style="display: block; margin: auto; width: 300px; height: 300px"
     />
-    <p style="text-align: justify; text-indent: 50px; font-family: Verdana, sans-serif">
+    <p>
       <b>Safari</b>, developed by <b>Apple Inc.</b>, is the default web browser for macOS and ios
       devices. Introduced in 2003, <b>Safart</b> is known for its sleek design, energy efficiency,
       and seamless integration with the Apple ecosystem. Emphasizing speed and privacy,
@@ -269,7 +320,7 @@ title: Laboratory 14
       data. Apple's dedication to a unified user experience across its devices reinforces
       <b>Safari's</b> status as a reliable and user-centric browser within the Apple ecosystem.
     </p>
-    <h4 style="text-align: center">
+    <h4 class="center">
       <a href="laboratory14.html">Back to main page</a>
     </h4>
   </body>
@@ -279,4 +330,4 @@ title: Laboratory 14
 <Image src="/01/lab11/safari.png" alt="" width={1704} height={1018} />
 
 </Tab>
-</Tabs> */}
+</Tabs>

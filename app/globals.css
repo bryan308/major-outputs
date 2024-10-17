@@ -68,7 +68,7 @@
 		@apply bg-background text-foreground;
 	}
 	a {
-		@apply underline text-[#0062D1] dark:text-[#0091FF];
+		@apply underline text-[#0062D1] dark:text-[#0091FF] underline-offset-2 decoration-[#99CEFF] dark:decoration-[#0A4380];
 	}
 
 	p {

@@ -33,7 +33,7 @@ const subjectData: Record<SubjectKeys, Lab[]> = {
 
 export default async function Page({ params }: { params: { subject: SubjectKeys; slug: string } }) {
 	const { subject, slug } = params
-	const labs = subjectData[subject] // No error here
+	const labs = subjectData[subject]
 	const labItem = labs.find((lab) => lab._meta.path === slug)
 
 	if (!labItem) {
@@ -49,6 +49,12 @@ export default async function Page({ params }: { params: { subject: SubjectKeys;
 			<MDXContent
 				code={labItem.mdx}
 				components={{
+					FileCard,
+					File,
+					Folder,
+					Files,
+					Tab,
+					Tabs,
 					pre: (props) => (
 						<CodeBlock {...props}>
 							<Pre>{props.children}</Pre>
@@ -60,12 +66,6 @@ export default async function Page({ params }: { params: { subject: SubjectKeys;
 							className="w-full block mx-auto mt-4 rounded-lg"
 						/>
 					),
-					FileCard,
-					File,
-					Folder,
-					Files,
-					Tab,
-					Tabs,
 					hr: (props) => (
 						<Separator
 							{...props}

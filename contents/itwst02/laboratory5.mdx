@@ -13,7 +13,7 @@ title: Laboratory 5
 - Submit the entire document under a single folder named "Lab5_[your full name]" on our Google Classroom.
 
 <Files className="mt-4">
-  <Folder name="root-folder" defaultOpen>
+  <Folder name="Lab5_Cedric_Bryan_M_Angulo" defaultOpen>
     <Folder name="font" defaultOpen>
       <File name="GeistVF.woff" />
     </Folder>
@@ -138,7 +138,7 @@ title: Laboratory 5
           <input
             type="number"
             id="radius"
-            min="0"
+            min="1"
             required
           />
         </div>
@@ -156,7 +156,6 @@ title: Laboratory 5
     <script src="script.js"></script>
   </body>
 </html>
-
 ```
 </Tab>
 <Tab value="js">
@@ -164,10 +163,12 @@ title: Laboratory 5
 function calculateArea() {
 	const radius = document.getElementById("radius").value;
 	const result = document.getElementById("result");
-	const area = Math.PI * Math.pow(radius, 2);
+	const area = Math.PI * radius * radius;
 
-	if (radius && radius > 0) {
-		result.innerHTML = "Area: " + "<span style='text-decoration: underline; text-underline-offset: 4px;'>" + area.toFixed(2) + "</span>";
+	if (radius <= 0) {
+		result.innerHTML = "<span style='color: red; font-weight: 500;'>Radius must be greater than zero</span>";
+	} else if (radius && radius > 0) {
+		result.innerHTML = "Area: " + "<span style='text-decoration: underline; text-underline-offset: 4px;'>" + area + "</span>";
 	} else {
 		result.innerHTML = "<span style='color: red; font-weight: 500;'>Input is empty</span>";
 	}

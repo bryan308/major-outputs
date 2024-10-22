@@ -165,12 +165,12 @@ function calculateArea() {
 	const result = document.getElementById("result");
 	const area = Math.PI * radius * radius;
 
-	if (radius <= 0) {
-		result.innerHTML = "<span style='color: red; font-weight: 500;'>Radius must be greater than zero</span>";
-	} else if (radius && radius > 0) {
-		result.innerHTML = "Area: " + "<span style='text-decoration: underline; text-underline-offset: 4px;'>" + area + "</span>";
-	} else {
+	if (radius === "") {
 		result.innerHTML = "<span style='color: red; font-weight: 500;'>Input is empty</span>";
+	} else if (radius <= 0) {
+		result.innerHTML = "<span style='color: red; font-weight: 500;'>Radius must be greater than zero</span>";
+	} else {
+		result.innerHTML = "Area: " + "<span style='text-decoration: underline; text-underline-offset: 4px;'>" + area + "</span>";
 	}
 }
 ```

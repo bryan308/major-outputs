@@ -1,0 +1,109 @@
+---
+title: Case Problem 6
+---
+
+**score**: 28/30
+
+Emily is a budding software developer who is working on a project for her school's math club. The club is organizing a competition where participants need to calculate the areas of different geometric shapes to determine the amount of paint needed for art projects. Emily decides to create a Java application called ShapeAreaCalculator that can compute the areas of three shapes: rectangles, triangles, and circles.
+
+To complete her application, she needs to implement the following features using Java methods:
+
+**Rectangle Area**: The area of a rectangle can be calculated using the formula:
+
+`Area=length×width`
+
+Create a method named calculateRectangleArea that takes two parameters (length and width) and returns the calculated area.
+
+**Triangle Area**: The area of a triangle can be calculated using the formula:
+
+`Area=1/2×base×height`
+
+Create a method named calculateTriangleArea that takes two parameters (base and height) and returns the calculated area.
+
+**Circle Area**: The area of a circle can be calculated using the formula:
+
+`Area=π×radius`
+
+Create a method named calculateCircleArea that takes one parameter (radius) and returns the calculated area.
+
+Emily also wants to include a feature that allows users to input the dimensions of each shape and view the calculated area. She plans to display the results in a user-friendly manner.
+
+**Questions**
+
+1. Write the Java methods that Emily needs to implement for calculating the areas of a rectangle, triangle, and circle.
+2. How would you design the main method to allow users to input the dimensions for each shape and call the corresponding methods to display the results?
+3. If a user inputs the following dimensions:
+
+**Rectangle**: length = 4, width = 5
+
+**Triangle**: base = 6, height = 3
+
+**Circle**: radius = 2. What will be the calculated areas for each shape?
+
+**Expected Outcomes**
+
+By solving this problem, students will demonstrate their understanding of Java methods, including how to create methods with parameters, return values, and method calling within a Java application. Additionally, students will practice problem-solving skills by translating real-world scenarios into code.
+
+You can use Jvdroid to write and run your program. Save it on a pdf file for easy access.
+
+```java title="Case6Angulo.java"
+import java.util.Scanner;
+
+public class Case6Angulo {
+  public static void main(String[] args) {
+    Scanner kb = new Scanner(System.in);
+
+    // Declare the variables needed
+    double length, width, base, height, radius;
+
+    // Input and calculation for rectangle
+    System.out.print("---RECTANGLE------------------ \n");
+    System.out.print("Enter the length: ");
+    length = kb.nextDouble();
+    System.out.print("Enter the width: ");
+    width = kb.nextDouble();
+    rectArea(length, width);
+
+    // Input and calculation for triangle
+    System.out.print("---TRIANGLE------------------- \n");
+    System.out.print("Enter the base: ");
+    base = kb.nextDouble();
+    System.out.print("Enter the height: ");
+    height = kb.nextDouble();
+    triArea(base, height);
+
+    // Input and calculation for circle
+    System.out.print("---CIRCLE--------------------- \n");
+    System.out.print("Enter the radius: ");
+    radius = kb.nextDouble();
+    circArea(radius);
+  }
+
+  // Method to calculate the area of a RECTANGLE
+  public static void rectArea(double length, double width) {
+    // rectangleArea = length * width
+    double rectangleArea = length * width;
+    System.out.println("Area of the rectangle is " + rectangleArea);
+    System.out.println();
+  }
+
+  // Method to calculate the area of a TRIANGLE
+  public static void triArea(double base, double height) {
+    // triangleArea = 1/2 * base * height
+    double triangleArea = (base * height) / 2; 
+    System.out.println("Area of the triangle is " + triangleArea);
+    System.out.println();
+  }
+
+  // Method to calculate the area of a CIRCLE
+  public static void circArea(double radius) {
+    final double PI = 3.1415926535d;
+    // circleArea = PI * radius^2
+    double circleArea = PI * (radius * radius);
+    System.out.println("Area of the circle is " + circleArea);
+    System.out.println();
+  }
+}
+```
+
+<FileCard fileName="Case6Angulo.pdf" image="" filePath="/files/Case6Angulo.pdf" />

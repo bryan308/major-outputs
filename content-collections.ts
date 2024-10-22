@@ -60,6 +60,23 @@ const itwst02 = defineCollection({
 	},
 })
 
+const itpf01 = defineCollection({
+	name: "itpf01",
+	directory: "contents/itpf01",
+	include: "**/*.mdx",
+	schema: (z) => ({
+		title: z.string(),
+		summary: z.string().optional(),
+	}),
+	transform: async (document, context) => {
+		const mdx = await compileMDX(context, document)
+		return {
+			...document,
+			mdx,
+		}
+	},
+})
+
 export default defineConfig({
-	collections: [itwst01, itwst02],
+	collections: [itwst01, itwst02, itpf01],
 })

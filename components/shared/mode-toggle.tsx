@@ -1,28 +1,36 @@
 "use client"
 
-import * as React from "react"
-// import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
-import { Moon, Sun } from "@mynaui/icons-react"
+import { useEffect, useState } from "react"
+import { LoaderIcon, MoonIcon, SunIcon } from "lucide-react"
 import { useTheme } from "next-themes"
-
-import { Button } from "@/components/ui/button"
+import { Button } from "../ui/button"
 
 export function ModeToggle() {
 	const { setTheme, theme } = useTheme()
+	const [mounted, setMounted] = useState(false)
+
+	useEffect(() => {
+		setMounted(true)
+	}, [])
+
+	if (!mounted) {
+		return (
+			<div className="size-8 grid place-content-center">
+				<LoaderIcon className="text-foreground size-4 animate-spin" />
+			</div>
+		)
+	}
+
 	const isLight = theme === "light"
 
 	return (
 		<Button
 			variant="link"
-			size="icon"
-			className="size-4"
+			className="text-foreground rounded-full size-8 m-0 p-0"
 			onClick={() => setTheme(isLight ? "dark" : "light")}
 		>
-			{isLight ? (
-				<Sun className="text-foreground size-12 md:size-5 transition-transform" />
-			) : (
-				<Moon className="text-foreground size-12 md:size-5 transition-transform" />
-			)}
+			<SunIcon className="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+			<MoonIcon className="absolute size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
 			<span className="sr-only">Toggle theme</span>
 		</Button>
 	)

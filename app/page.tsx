@@ -71,7 +71,16 @@ export default function Home() {
 					value="case-study"
 					className="my-6"
 				>
-					🚧 coming soon... 🚧
+					<div className="my-6">
+						<Link
+							href="https://rainiel-sevilla.vercel.app/"
+							target="_blank"
+							rel="noreferrer"
+						>
+							Rainiel Sevilla‘s Portfolio
+						</Link>
+						<p>A personal website displaying background, skills, and contact details.</p>
+					</div>
 				</TabsContent>
 			</Tabs>
 			<hr className="my-10" />

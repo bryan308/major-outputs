@@ -1,0 +1,94 @@
+---
+title: Case Problem 1
+---
+
+**score**: ---
+
+You are tasked with creating a Java program for a company that calculates an employee's bonus based on their and.
+
+- Employees who have been with the company for  are eligible for a bonus. Otherwise, they are not eligible for a bonus.
+
+- If they are eligible for a bonus, the bonus amount depends on their performance rating:
+  - If the performance rating is 5 (__Excellent__), they receive a bonus of 20% of their salary.
+  - If the performance rating is 4 (__Good__), they receive a bonus of 10% of their salary.
+  - If the performance rating is 3 (__Average__), they receive a bonus of 5% of their salary.
+  - If the performance rating is below 3, they do not receive any bonus.
+
+
+- If the employee is not eligible for a bonus for less than 5 years of service, the program should print: "No bonus. You need more experience.
+- If they are eligible, print the bonus amount along with the message "You have earned a bonus of [bonus_amount] based on your performance rating."
+
+```powershell
+Sample Output 1:
+Enter years of service: 4
+Enter performance rating (1-5): 4
+Enter salary: 50000
+No bonus. You need more experience.
+
+Sample Output 2:
+Enter years of service: 10
+Enter performance rating (1-5): 3
+Enter salary: 100000
+You have earned a bonus of 5000.0 based on your performance rating.
+```
+
+Be ready for a random presentation next week.
+
+---
+
+**code**
+
+```java title="Case1Angulo.java"
+import java.util.Scanner;
+
+public class Case1Angulo {
+  public static void main(String[] args) {
+    Scanner kb = new Scanner(System.in);
+
+    int yearsOfService, performanceRating;
+    double salary, bonus = 0;
+
+    // Read input from the user
+    System.out.print("Enter years of service: ");
+    yearsOfService = kb.nextInt();
+
+    System.out.print("Enter performance rating (1-5): ");
+    performanceRating = kb.nextInt();
+
+    System.out.print("Enter salary: ");
+    salary = kb.nextDouble();
+
+    // Check if the employee is eligible for a bonus
+    if (yearsOfService < 5) {
+      System.out.println("No bonus. You need more experience.");
+    } else {
+      switch (performanceRating) {
+        case 5:
+          bonus = salary * 0.20;
+          break;
+        case 4:
+          bonus = salary * 0.10;
+          break;
+        case 3:
+          bonus = salary * 0.05;
+          break;
+        default:
+          bonus = 0;
+          break;
+      }
+
+      if (bonus > 0) {
+        System.out.println("You have earned a bonus of " + bonus + " based on your performance rating.");
+      } else {
+        System.out.println("No bonus. Your performance rating is below 3.");
+      }
+    }
+  }
+}
+```
+
+---
+
+**submitted output**
+
+<FileCard fileName="Case1Angulo.pdf" image="" filePath="/files/fCase1Angulo.pdf" />

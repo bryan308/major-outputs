@@ -1,0 +1,137 @@
+---
+title: Case Problem 2
+---
+
+**score**: ---
+
+You are tasked with creating a Java program that calculates an employee’s the total compensation consists of the base salary, a performance-based bonus, and additional department-based benefits.
+
+- **Employee** Role: The program must first check the role of the employee. Roles can be:
+- **Manager**: Base salary of $80,000.
+- **Developer**: Base salary of $60,000.
+- **Intern**: Base salary of $30,000.
+
+**Years of Service**:
+
+- Employees with 10 or more years of service receive a 5% bonus on their base salary.
+- Employees with 5 to 9 years of service receive a 3% bonus.
+- Employees with less than 5 years of service receive no bonus
+
+**Department-Specific Benefits**:
+- Employees in the IT Department receive an additional $5,000 benefit.
+- Employees in the HR Department receive an additional $3,000 benefit.
+- Employees in the Sales Department receive an additional $7,000 benefit.
+- Employees in other departments receive $2,000 benefit.
+
+If an employee is an intern, they are not eligible for any bonus, regardless of their years of service. However, they still receive the department-specific benefits.
+
+The program should display the employee's base salary, bonus (if applicable), department benefit, and the final total compensation.
+
+```powershell
+Sample output 1:
+Enter employee role (Manager, Developer, Intern): Manager
+Enter years of service: 12
+Enter department (IT, HR, Sales, Other): HR
+
+Base Salary: $80,000.00
+Bonus: $4,000.00
+Department Benefit: $3,000.00
+Total Compensation: $87,000.00
+
+Sample output 2:
+Enter employee role (Manager, Developer, Intern): Intern
+Enter years of service: 6
+Enter department (IT, HR, Sales, Other): Sales
+
+Base Salary: $30,000.00
+Bonus: $0.00
+Department Benefit: $7,000.00
+Total Compensation: $37,000.00
+```
+
+---
+
+**code**
+
+```java title="Case2Angulo.java"
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class Case2Angulo {
+  public static void main(String[] args) {
+    Scanner kb = new Scanner(System.in);
+
+    // Read input from the user
+    System.out.print("Enter employee role (Manager, Developer, Intern): ");
+    String role = kb.nextLine();
+
+    System.out.print("Enter years of service: ");
+    int yearsOfService = kb.nextInt();
+    kb.nextLine();
+
+    System.out.print("Enter department (IT, HR, Sales, Other): ");
+    String department = kb.nextLine();
+
+    double baseSalary = 0, bonus = 0, departmentBenefit = 0;
+
+    // Determine base salary based on role
+    switch (role) {
+      case "Manager":
+        baseSalary = 80000;
+        if (yearsOfService >= 10) {
+          bonus = baseSalary * 0.05;
+        } else if (yearsOfService >= 5) {
+          bonus = baseSalary * 0.03;
+        }
+        break;
+      case "Developer":
+        baseSalary = 60000;
+        if (yearsOfService >= 10) {
+          bonus = baseSalary * 0.05;
+        } else if (yearsOfService >= 5) {
+          bonus = baseSalary * 0.03;
+        }
+        break;
+      case "Intern":
+        baseSalary = 30000;
+        break;
+      default:
+        System.out.println("Invalid role entered.");
+        return;
+    }
+
+    // Determine department-specific benefits
+    switch (department) {
+      case "IT":
+        departmentBenefit = 5000;
+        break;
+      case "HR":
+        departmentBenefit = 3000;
+        break;
+      case "Sales":
+        departmentBenefit = 7000;
+        break;
+      default:
+        departmentBenefit = 2000;
+        break;
+    }
+
+    // Calculate total compensation
+    double totalCompensation = baseSalary + bonus + departmentBenefit;
+
+    // Print the results using DecimalFormat
+    DecimalFormat df = new DecimalFormat("$#,##0.00");
+
+    System.out.println("\nBase Salary: " + df.format(baseSalary));
+    System.out.println("Bonus: " + df.format(bonus));
+    System.out.println("Department Benefit: " + df.format(departmentBenefit));
+    System.out.println("Total Compensation: " + df.format(totalCompensation));
+  }
+}
+```
+
+---
+
+**submitted output**
+
+<FileCard fileName="Case2Angulo.pdf" image="" filePath="/files/fCase2Angulo.pdf" />

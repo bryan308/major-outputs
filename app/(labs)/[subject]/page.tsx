@@ -27,21 +27,36 @@ export default function SubjectPage({ params }: { params: { subject: string } })
 		return notFound()
 	}
 
+	const midtermLabs = labs.filter((lab) => lab._meta.path.startsWith("m-"))
+	const finalLabs = labs.filter((lab) => lab._meta.path.startsWith("f-"))
+
+	const renderLabs = (labs: Lab[]) =>
+		labs
+			.sort((a: Lab, b: Lab) => {
+				const getNumber = (title: string) => parseInt(title.split("Laboratory ")[1], 10)
+				return getNumber(a.title) - getNumber(b.title)
+			})
+			.map((lab: Lab) => (
+				<div key={lab._meta.path}>
+					<Link href={`/${subject}/${lab._meta.path}`}>{lab.title}</Link>
+				</div>
+			))
+
 	return (
 		<>
 			<Link href="/">&larr; back</Link>
-			<div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-10">
-				{labs
-					.sort((a: Lab, b: Lab) => {
-						const getNumber = (title: string) => parseInt(title.split("Laboratory ")[1], 10)
-						return getNumber(a.title) - getNumber(b.title)
-					})
-					.map((lab: Lab) => (
-						<div key={lab._meta.path}>
-							<Link href={`/${subject}/${lab._meta.path}`}>{lab.title}</Link>
-						</div>
-					))}
-			</div>
+			{midtermLabs.length > 0 && (
+				<div className="mt-10">
+					<h2>Midterms</h2>
+					<div className="grid grid-cols-2 md:grid-cols-3 gap-4">{renderLabs(midtermLabs)}</div>
+				</div>
+			)}
+			{finalLabs.length > 0 && (
+				<div className="mt-10">
+					<h2>Finals</h2>
+					<div className="grid grid-cols-2 md:grid-cols-3 gap-4">{renderLabs(finalLabs)}</div>
+				</div>
+			)}
 		</>
 	)
 }

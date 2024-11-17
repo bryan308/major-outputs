@@ -29,7 +29,14 @@ export const Header = () => {
 					portfolio
 				</Link>
 				/{" "}
-				<ModeToggle />
+				<Link
+					href="https://bento.me/cedricc"
+					target="_blank"
+					rel="noreferrer"
+				>
+					bento
+				</Link>
+				/ <ModeToggle />
 			</div>
 		</header>
 	)

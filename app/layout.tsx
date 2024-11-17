@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: "cedricc",
 		description: "This is where I store my outputs from my major subjects.",
-		images: ["https://cedricc.vercel.app/images/og-image.png"],
+		images: ["https://cedricc.vercel.app/og-image.png"],
 	},
 }
 

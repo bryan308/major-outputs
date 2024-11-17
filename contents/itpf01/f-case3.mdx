@@ -1,0 +1,86 @@
+---
+title: Case Problem 3
+---
+
+**score**: ---
+
+Write an application that creates a quiz. The quiz should contain at least five questions about a hobby, popular music, astronomy, or any other personal interest. Each question should be a multiple-choice question with at least four answer options. When the user answers the question correctly, display a congratulatory message. If the user responds to a question incorrectly, display an appropriate message as well as the correct answer. At the end of the quiz, display the number of correct and incorrect answers, and the percentage of correct answers.
+
+---
+
+**code**
+
+```java title="Case3Angulo.java"
+import java.util.Scanner;
+
+public class Case3Angulo {
+
+  public static void main(String[] args) {
+    int correctCount = 0;
+    final int TOTAL_QUESTIONS = 5;
+
+    Scanner kb = new Scanner(System.in);
+
+    System.out.println("========== Welcome to the Quiz App ==========\n");
+
+    // Questions and options
+    String[] questions = {
+        "What planet is known as the Red Planet?",
+        "Who is known as the King of Pop?",
+        "What is the largest mammal?",
+        "Which element has the chemical symbol 'O'?",
+        "What is the capital of the Philippines?"
+    };
+
+    String[][] options = {
+        { "a. Mars", "b. Earth", "c. Jupiter", "d. Saturn" },
+        { "a. Elvis Presley", "b. Michael Jackson", "c. Prince", "d. Justin Bieber" },
+        { "a. Elephant", "b. Shark", "c. Giraffe", "d. Blue Whale" },
+        { "a. Gold", "b. Oxygen", "c. Silver", "d. Iron" },
+        { "a. Baguio", "b. Cebu", "c. Manila", "d. Nueva Ecija" }
+    };
+
+    // Correct answers stored in array
+    char[] correctAnswers = { 'a', 'b', 'd', 'b', 'c' };
+
+    for (int i = 0; i < TOTAL_QUESTIONS; i++) {
+      correctCount = askQuestion(kb, questions[i], options[i][0], options[i][1], options[i][2], options[i][3],
+          correctAnswers[i], correctCount);
+    }
+
+    int incorrectCount = TOTAL_QUESTIONS - correctCount;
+    double percentageCorrect = ((double) correctCount / TOTAL_QUESTIONS) * 100;
+
+    System.out.println("========== Quiz Complete! ==========");
+    System.out.println("Correct Answers: " + correctCount + "/" + TOTAL_QUESTIONS);
+    System.out.println("Incorrect Answers: " + incorrectCount + "/" + TOTAL_QUESTIONS);
+    System.out.println("Percentage Correct: " + percentageCorrect + "%");
+    System.out.println("====================================");
+  }
+
+  // Method to ask a question and check the answer
+  public static int askQuestion(Scanner kb, String question, String option1, String option2, String option3, String option4, char correctAnswer, int correctCount) {
+    System.out.println("========== Question ==========");
+    System.out.println(question);
+    System.out.println(option1 + "\n" + option2 + "\n" + option3 + "\n" + option4);
+    System.out.print("Your answer: ");
+
+    char answer = kb.next().charAt(0);
+
+    if (answer == correctAnswer) {
+      correctCount++;
+      System.out.println("Correct!\n");
+    } else {
+      System.out.println("Incorrect. The correct answer is " + correctAnswer + ".\n");
+    }
+
+    return correctCount;
+  }
+}
+```
+
+---
+
+**submitted output**
+
+<FileCard fileName="Case3Angulo.pdf" image="" filePath="/files/fCase3Angulo.pdf" />

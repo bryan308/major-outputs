@@ -16,8 +16,33 @@ const geistMono = localFont({
 })
 
 export const metadata: Metadata = {
-	title: "cedric",
-	description: "This is for my outputs in my Web Systems Technolies subject.",
+	title: {
+		template: "%s | cedric",
+		default: "cedric",
+	},
+	description: "This is where I store my outputs from my major subjects.",
+	openGraph: {
+		title: "cedric",
+		description: "This is where I store my outputs from my major subjects.",
+		url: "https://cedricc.vercel.app",
+		siteName: "cedric",
+		images: [
+			{
+				url: "https://cedricc.vercel.app/og-image.png",
+				width: 1600,
+				height: 800,
+				alt: "cedric",
+			},
+		],
+		locale: "en_US",
+		type: "website",
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "cedricc",
+		description: "This is where I store my outputs from my major subjects.",
+		images: ["https://cedricc.vercel.app/images/og-image.png"],
+	},
 }
 
 export default function RootLayout({

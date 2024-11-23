@@ -32,7 +32,7 @@ const subjectData: Record<SubjectKeys, Lab[]> = {
 }
 
 export default async function Page({ params }: { params: { subject: SubjectKeys; slug: string } }) {
-	const { subject, slug } = params
+	const { subject, slug } = await params
 	const labs = subjectData[subject]
 	const labItem = labs.find((lab) => lab._meta.path === slug)
 
@@ -89,8 +89,12 @@ export const generateStaticParams = async () => {
 	return params
 }
 
-export function generateMetadata({ params }: { params: { subject: SubjectKeys; slug: string } }) {
-	const { subject, slug } = params
+export async function generateMetadata({
+	params,
+}: {
+	params: { subject: SubjectKeys; slug: string }
+}) {
+	const { subject, slug } = await params
 	const labs = subjectData[subject]
 	const page = labs.find((lab) => lab._meta.path === slug)
 

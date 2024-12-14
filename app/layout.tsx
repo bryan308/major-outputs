@@ -3,6 +3,7 @@ import localFont from "next/font/local"
 import "./globals.css"
 import { Header } from "@/components/shared/header"
 import Providers from "@/components/shared/theme-provider"
+import LenisWrapper from "@/components/shared/lenis-wrapper"
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -53,15 +54,17 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<Providers>
-					<Header />
-					<main
-						role="main"
-						className="mx-auto max-w-4xl p-4"
-					>
-						{children}
-					</main>
-				</Providers>
+				<LenisWrapper>
+					<Providers>
+						<Header />
+						<main
+							role="main"
+							className="mx-auto max-w-4xl p-4"
+						>
+							{children}
+						</main>
+					</Providers>
+				</LenisWrapper>
 			</body>
 		</html>
 	)

@@ -70,7 +70,7 @@ Appropriate error messages are shown for invalid inputs using the alert method f
   </head>
 
   <body>
-    <form action="submit_form.php" method="post" onsubmit="return validateForm(event)">
+    <form action="submit_form.php" method="post" onsubmit="validateForm(event)">
       <div class="form-group">
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="fname" placeholder="e.g., Juan">
@@ -125,6 +125,8 @@ Appropriate error messages are shown for invalid inputs using the alert method f
     </form>
     <script>
       function validateForm(event) {
+        event.preventDefault();
+
         const fname = document.getElementById("fname").value;
         const lname = document.getElementById("lname").value;
         const email = document.getElementById("email").value;
@@ -139,7 +141,7 @@ Appropriate error messages are shown for invalid inputs using the alert method f
           return false;
         }
 
-        if (email  === "") {
+        if (email === "") {
           alert("Please enter your email");
           return false;
         }
@@ -164,7 +166,7 @@ Appropriate error messages are shown for invalid inputs using the alert method f
           return false;
         }
 
-        if (terms === "") {
+        if (!terms) {
           alert("You must agree to the terms and conditions");
           return false;
         }
@@ -175,7 +177,7 @@ Appropriate error messages are shown for invalid inputs using the alert method f
 
         alert("Successfully Submitted");
         return true;
-        }
+      }
     </script>
   </body>
 
@@ -321,5 +323,7 @@ label[for='female'] {
 ---
 
 **output**
+
+<FileCard fileName="Lab6_Cedric_Bryan_M_Angulo.pdf" image="/02/lab6-pdf.png" filePath="/files/Lab6_Cedric_Bryan_M_Angulo.pdf" />
 
 <Image src="/02/lab2.png" alt="Laboratory 2" width={1690} height={1067} />

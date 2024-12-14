@@ -31,8 +31,15 @@ const subjectData: Record<SubjectKeys, Lab[]> = {
 	itpf01: allItpf01s,
 }
 
-export default async function Page({ params }: { params: { subject: SubjectKeys; slug: string } }) {
-	const { subject, slug } = params
+export interface PageProps {
+	params: Promise<{
+		subject: SubjectKeys
+		slug: string
+	}>
+}
+
+export default async function Page({ params }: PageProps) {
+	const { subject, slug } = await params
 	const labs = subjectData[subject]
 	const labItem = labs.find((lab) => lab._meta.path === slug)
 
@@ -89,13 +96,13 @@ export const generateStaticParams = async () => {
 	return params
 }
 
-export function generateMetadata({ params }: { params: { subject: SubjectKeys; slug: string } }) {
-	const { subject, slug } = params
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+	const { subject, slug } = await params
 	const labs = subjectData[subject]
 	const page = labs.find((lab) => lab._meta.path === slug)
 
 	return {
 		title: `${page?.title} | ${subject.toUpperCase()}`,
 		// Add additional metadata fields as needed
-	} satisfies Metadata
+	}
 }

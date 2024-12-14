@@ -1,6 +1,7 @@
 import { allItwst01s, allItwst02s, allItpf01s } from "content-collections"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { PageProps } from "./[slug]/page"
 
 type Lab = {
 	_meta: {
@@ -19,8 +20,8 @@ const subjectData: SubjectData = {
 	itpf01: allItpf01s,
 }
 
-export default function SubjectPage({ params }: { params: { subject: string } }) {
-	const { subject } = params
+export default async function SubjectPage({ params }: PageProps) {
+	const { subject } = await params
 	const labs = subjectData[subject] as Lab[]
 
 	if (!labs) {

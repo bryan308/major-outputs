@@ -5,7 +5,7 @@ import { ModeToggle } from "./mode-toggle"
 export const Header: FC = () => {
 	return (
 		<header className="container mx-auto max-w-4xl p-4">
-			<div className="flex items-center gap-2 font-mono font-medium">
+			<div className="flex items-center gap-2 font-mono font-medium w-fit mx-auto">
 				<Link
 					className="flex items-center gap-2"
 					href="/"

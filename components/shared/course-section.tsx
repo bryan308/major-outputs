@@ -1,5 +1,7 @@
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ArrowRight } from "@mynaui/icons-react"
+import { BookOpen, Laptop } from "lucide-react"
 import Link from "next/link"
 
 interface CourseSectionProps {
@@ -7,9 +9,7 @@ interface CourseSectionProps {
 	teacher: string
 	section: string
 	laboratoriesLink: string
-	laboratoriesDescription: string
-	caseStudyLink: string
-	caseStudyDescription: string
+	caseStudyLink?: string
 }
 
 const CourseSection: React.FC<CourseSectionProps> = ({
@@ -17,58 +17,82 @@ const CourseSection: React.FC<CourseSectionProps> = ({
 	teacher,
 	section,
 	laboratoriesLink,
-	laboratoriesDescription,
 	caseStudyLink,
-	caseStudyDescription,
 }) => {
 	return (
-		<>
+		<div className="p-4 border rounded-lg shadow">
 			<h2 className="text-lg tracking-tighter font-semibold">{title}</h2>
-			<p className="mb-4">
+			<p className="text-sm m-0">
 				<span className="font-semibold">Teacher</span>: {teacher}
 			</p>
-			<p className="mb-4">
+			<p className="text-sm mt-0 mb-4">
 				<span className="font-semibold">Section</span>: {section}
 			</p>
 			{caseStudyLink ? (
-				<Tabs defaultValue="laboratories">
-					<TabsList>
-						<TabsTrigger value="laboratories">laboratories</TabsTrigger>
-						<TabsTrigger value="case-study">case study</TabsTrigger>
-					</TabsList>
-					<TabsContent value="laboratories">
-						<div className="my-6">
-							<Link href={laboratoriesLink}>
-								laboratories
-								<ArrowRight className="inline size-4" />
+				<>
+					<Tabs defaultValue="laboratories">
+						<ScrollArea>
+							<TabsList className="mb-3">
+								<TabsTrigger value="laboratories">
+									<Laptop
+										className="-ms-0.5 me-1.5 opacity-60"
+										size={16}
+										strokeWidth={2}
+										aria-hidden="true"
+									/>
+									Lab
+								</TabsTrigger>
+								<TabsTrigger
+									value="case-study"
+									className="group"
+								>
+									<BookOpen
+										className="-ms-0.5 me-1.5 opacity-60"
+										size={16}
+										strokeWidth={2}
+										aria-hidden="true"
+									/>
+									Case Study
+								</TabsTrigger>
+							</TabsList>
+							<ScrollBar orientation="horizontal" />
+						</ScrollArea>
+						<TabsContent
+							className="m-0"
+							value="laboratories"
+						>
+							<Link
+								className="text-sm"
+								href={laboratoriesLink}
+							>
+								laboratories <ArrowRight className="inline size-4" />
 							</Link>
-							<p>{laboratoriesDescription}</p>
-						</div>
-					</TabsContent>
-					<TabsContent value="case-study">
-						<div className="my-6">
+						</TabsContent>
+						<TabsContent
+							className="m-0"
+							value="case-study"
+						>
 							<Link
 								href={caseStudyLink}
 								target="_blank"
 								rel="noreferrer"
+								className="text-sm"
 							>
 								{caseStudyLink}
 							</Link>
-							<p>{caseStudyDescription}</p>
-						</div>
-					</TabsContent>
-				</Tabs>
+						</TabsContent>
+					</Tabs>
+				</>
 			) : (
-				<div className="my-6">
-					<Link href={laboratoriesLink}>
-						laboratories
-						<ArrowRight className="inline size-4" />
-					</Link>
-					<p>{laboratoriesDescription}</p>
-				</div>
+				<Link
+					href={laboratoriesLink}
+					className="text-sm"
+				>
+					laboratories
+					<ArrowRight className="inline size-4" />
+				</Link>
 			)}
-			<hr className="my-10" />
-		</>
+		</div>
 	)
 }
 

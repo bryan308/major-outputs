@@ -4,7 +4,7 @@ export default function Home() {
 	return (
 		<>
 			<CourseSection
-				title="ITWST-01 / AY 2023-2024"
+				title="IT-WST01 / AY 2023-2024"
 				teacher="Rose Anne G. Cochanco"
 				section="1E"
 				laboratoriesLink="/itwst01"
@@ -13,7 +13,7 @@ export default function Home() {
 				caseStudyDescription="Educational Website where you can start learning basic Web Development."
 			/>
 			<CourseSection
-				title="ITWST-02 / AY 2024-2025"
+				title="IT-WST02 / AY 2024-2025"
 				teacher="Rose Anne G. Cochanco"
 				section="2A"
 				laboratoriesLink="/itwst02"
@@ -22,7 +22,7 @@ export default function Home() {
 				caseStudyDescription="A personal website displaying background, skills, and contact details."
 			/>
 			<CourseSection
-				title="ITPF-01 / AY 2024-2025"
+				title="IT-PF01 / AY 2024-2025"
 				teacher="Prince Mert Nicolas"
 				section="2A"
 				laboratoriesLink="/itpf01"
@@ -31,7 +31,7 @@ export default function Home() {
 				caseStudyDescription=""
 			/>
 			<CourseSection
-				title="ITPF-02 / 2025"
+				title="IT-PF02 / 2025"
 				teacher="Prince Mert Nicolas"
 				section="2A"
 				laboratoriesLink="/itpf02"

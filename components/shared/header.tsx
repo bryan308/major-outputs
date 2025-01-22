@@ -1,8 +1,8 @@
-import React from "react"
+import React, { FC } from "react"
 import Link from "next/link"
 import { ModeToggle } from "./mode-toggle"
 
-export const Header = () => {
+export const Header: FC = () => {
 	return (
 		<header className="container mx-auto max-w-4xl p-4">
 			<div className="flex items-center gap-2 font-mono font-medium">
@@ -22,7 +22,7 @@ export const Header = () => {
 				</Link>
 				/{" "}
 				<Link
-					href="https://cdrcangulo.vercel.app"
+					href="https://cedricangulo.vercel.app"
 					target="_blank"
 					rel="noreferrer"
 				>
@@ -41,3 +41,4 @@ export const Header = () => {
 		</header>
 	)
 }
+Header.displayName = "Header"

@@ -12,7 +12,7 @@ export const Header: FC = () => {
 				>
 					cedric
 				</Link>{" "}
-				/
+				<span className="text-muted-foreground">|</span>
 				<Link
 					href="https://github.com/bryan308"
 					target="_blank"
@@ -20,7 +20,7 @@ export const Header: FC = () => {
 				>
 					github
 				</Link>
-				/{" "}
+				<span className="text-muted-foreground">|</span>{" "}
 				<Link
 					href="https://cedricangulo.vercel.app"
 					target="_blank"
@@ -28,7 +28,7 @@ export const Header: FC = () => {
 				>
 					portfolio
 				</Link>
-				/{" "}
+				<span className="text-muted-foreground">|</span>{" "}
 				<Link
 					href="https://bento.me/cedricc"
 					target="_blank"
@@ -36,7 +36,7 @@ export const Header: FC = () => {
 				>
 					bento
 				</Link>
-				/ <ModeToggle />
+				<span className="text-muted-foreground">|</span> <ModeToggle />
 			</div>
 		</header>
 	)

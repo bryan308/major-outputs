@@ -18,7 +18,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
 	title: {
-		template: "%s | cedric",
+		template: "cedric | %s",
 		default: "cedric",
 	},
 	description: "This is where I store my outputs from my major subjects.",

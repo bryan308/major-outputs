@@ -42,6 +42,7 @@ export interface PageProps {
 
 export default async function Page({ params }: PageProps) {
 	const { subject, slug } = await params
+	const formattedSubject = subject.replace(/(it|cc)/, "$1-")
 	const labs = subjectData[subject]
 	const labItem = labs.find((lab) => lab._meta.path === slug)
 
@@ -51,10 +52,19 @@ export default async function Page({ params }: PageProps) {
 
 	return (
 		<>
-			<Link href={`/${subject}`}>&larr; back</Link>
-			<h2 className="text-lg tracking-tighter my-6 font-semibold">
-				{subject.toUpperCase()} / {labItem.title}
-			</h2>
+			<Link
+				href={`/${subject}`}
+				className="mx-auto block w-fit"
+			>
+				&larr; back
+			</Link>
+			<div className="mx-auto w-fit text-center">
+				<h2 className="text-2xl tracking-tighter mt-10 font-semibold">
+					{formattedSubject.toUpperCase()}
+				</h2>
+				<h4 className="tracking-tighter font-semibold">{labItem.title}</h4>
+			</div>
+			<Separator className="my-4" />
 			<MDXContent
 				code={labItem.mdx}
 				components={{
@@ -100,11 +110,11 @@ export const generateStaticParams = async () => {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const { subject, slug } = await params
+	const formattedSubject = subject.replace(/(it|cc)/, "$1-")
 	const labs = subjectData[subject]
 	const page = labs.find((lab) => lab._meta.path === slug)
 
 	return {
-		title: `${page?.title} | ${subject.toUpperCase()}`,
-		// Add additional metadata fields as needed
+		title: `${formattedSubject.toUpperCase()} | ${page?.title}`,
 	}
 }

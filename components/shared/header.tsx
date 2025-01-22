@@ -1,18 +1,18 @@
-import React from "react"
+import React, { FC } from "react"
 import Link from "next/link"
 import { ModeToggle } from "./mode-toggle"
 
-export const Header = () => {
+export const Header: FC = () => {
 	return (
 		<header className="container mx-auto max-w-4xl p-4">
-			<div className="flex items-center gap-2 font-mono font-medium">
+			<div className="flex items-center gap-2 font-mono font-medium w-fit mx-auto">
 				<Link
 					className="flex items-center gap-2"
 					href="/"
 				>
 					cedric
 				</Link>{" "}
-				/
+				<span className="text-muted-foreground">|</span>
 				<Link
 					href="https://github.com/bryan308"
 					target="_blank"
@@ -20,15 +20,15 @@ export const Header = () => {
 				>
 					github
 				</Link>
-				/{" "}
+				<span className="text-muted-foreground">|</span>{" "}
 				<Link
-					href="https://cdrcangulo.vercel.app"
+					href="https://cedricangulo.vercel.app"
 					target="_blank"
 					rel="noreferrer"
 				>
 					portfolio
 				</Link>
-				/{" "}
+				<span className="text-muted-foreground">|</span>{" "}
 				<Link
 					href="https://bento.me/cedricc"
 					target="_blank"
@@ -36,8 +36,9 @@ export const Header = () => {
 				>
 					bento
 				</Link>
-				/ <ModeToggle />
+				<span className="text-muted-foreground">|</span> <ModeToggle />
 			</div>
 		</header>
 	)
 }
+Header.displayName = "Header"

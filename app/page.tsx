@@ -1,35 +1,57 @@
 import CourseSection from "@/components/shared/course-section"
+import { Plus } from "lucide-react"
 
 export default function Home() {
 	return (
 		<>
-			<CourseSection
-				title="ITWST-01 / AY 2023-2024"
-				teacher="Rose Anne G. Cochanco"
-				section="1E"
-				laboratoriesLink="/itwst01"
-				laboratoriesDescription="A collection of projects and assignments from my 1st year, 2nd semester, applying and building upon my foundational web development skills."
-				caseStudyLink="https://webwisee.vercel.app/"
-				caseStudyDescription="Educational Website where you can start learning basic Web Development."
-			/>
-			<CourseSection
-				title="ITWST-02 / AY 2024-2025"
-				teacher="Rose Anne G. Cochanco"
-				section="2A"
-				laboratoriesLink="/itwst02"
-				laboratoriesDescription="A series of laboratories from my 2nd year, 1st semester, highlighting the continued development of my web expertise and new challenges tackled."
-				caseStudyLink="https://rnlsevilla.vercel.app/"
-				caseStudyDescription="A personal website displaying background, skills, and contact details."
-			/>
-			<CourseSection
-				title="ITPF-01 / AY 2024-2025"
-				teacher="Prince Mert Nicolas"
-				section="2A"
-				laboratoriesLink="/itpf01"
-				laboratoriesDescription="A collection of case problems from my 2nd year, 1st semester, using java programming language."
-				caseStudyLink=""
-				caseStudyDescription=""
-			/>
+			<div className="relative grid md:grid-cols-2 lg:grid-cols-3 border p-4">
+				<Plus className="absolute -top-[0.77rem] -right-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
+				<Plus className="absolute -top-[0.77rem] -left-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
+				<Plus className="absolute -bottom-[0.77rem] -left-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
+				<Plus className="absolute -bottom-[0.77rem] -right-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
+				<CourseSection
+					subject="IT-WST01"
+					year="A.Y. 2023-2024 2nd sem"
+					teacher="Rose Anne G. Cochanco"
+					section="1E"
+					laboratoriesLink="/itwst01"
+					caseStudyLink="https://webwisee.vercel.app/"
+					className="border-b md:border-r"
+				/>
+				<CourseSection
+					subject="IT-WST02"
+					year="A.Y. 2024-2025 1st sem"
+					teacher="Rose Anne G. Cochanco"
+					section="2A"
+					laboratoriesLink="/itwst02"
+					caseStudyLink="https://rnlsevilla.vercel.app/"
+					className="border-b lg:border-r"
+				/>
+				<CourseSection
+					subject="IT-PF01"
+					year="A.Y. 2024-2025 1st sem"
+					teacher="Prince Mert Nicolas"
+					section="2A"
+					laboratoriesLink="/itpf01"
+					className="border-b md:border-r lg:border-r-0"
+				/>
+				<CourseSection
+					subject="IT-PF02"
+					year="A.Y. 2024-2025 2nd sem"
+					teacher="Prince Mert Nicolas"
+					section="2A"
+					laboratoriesLink="/itpf02"
+					className="border-b lg:border-b-0 lg:border-r"
+				/>
+				<CourseSection
+					subject="CC-105"
+					year="A.Y. 2024-2025 2nd sem"
+					teacher="Cris Norman Olipas"
+					section="2A"
+					laboratoriesLink="/cc105"
+					className="md:border-r"
+				/>
+			</div>
 		</>
 	)
 }

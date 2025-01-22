@@ -3,22 +3,21 @@ import localFont from "next/font/local"
 import "./globals.css"
 import { Header } from "@/components/shared/header"
 import Providers from "@/components/shared/theme-provider"
-import LenisWrapper from "@/components/shared/lenis-wrapper"
 
 const geistSans = localFont({
-	src: "./fonts/GeistVF.woff",
+	src: "../public/fonts/GeistVF.woff",
 	variable: "--font-geist-sans",
 	weight: "100 900",
 })
 const geistMono = localFont({
-	src: "./fonts/GeistMonoVF.woff",
+	src: "../public/fonts/GeistMonoVF.woff",
 	variable: "--font-geist-mono",
 	weight: "100 900",
 })
 
 export const metadata: Metadata = {
 	title: {
-		template: "%s | cedric",
+		template: "cedric | %s",
 		default: "cedric",
 	},
 	description: "This is where I store my outputs from my major subjects.",
@@ -52,19 +51,20 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en">
+		<html
+			lang="en"
+			suppressHydrationWarning
+		>
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<LenisWrapper>
-					<Providers>
-						<Header />
-						<main
-							role="main"
-							className="mx-auto max-w-4xl p-4"
-						>
-							{children}
-						</main>
-					</Providers>
-				</LenisWrapper>
+				<Providers>
+					<Header />
+					<main
+						role="main"
+						className="mx-auto max-w-6xl p-4"
+					>
+						{children}
+					</main>
+				</Providers>
 			</body>
 		</html>
 	)

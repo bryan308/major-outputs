@@ -26,7 +26,7 @@ export function ModeToggle() {
 	return (
 		<Button
 			variant="link"
-			className="text-foreground rounded-full size-8 m-0 p-0"
+			className="text-foreground size-8 m-0 p-0"
 			onClick={() => setTheme(isLight ? "dark" : "light")}
 		>
 			<SunIcon className="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />

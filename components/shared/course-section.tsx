@@ -1,74 +1,126 @@
+import { FC } from "react"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { cn } from "@/lib/utils"
 import { ArrowRight } from "@mynaui/icons-react"
 import Link from "next/link"
 
+const subjectFullNames: { [key: string]: string } = {
+	"IT-WST01": "Web Systems and Technologies 1",
+	"IT-WST02": "Web Systems and Technologies 2",
+	"IT-PF01": "Object-Oriented Programming 1",
+	"IT-PF02": "Object-Oriented Programming 2",
+	"CC-105": "Applications Development and Emerging Technologies",
+}
+
 interface CourseSectionProps {
-	title: string
+	subject: string
 	teacher: string
 	section: string
 	laboratoriesLink: string
-	laboratoriesDescription: string
-	caseStudyLink: string
-	caseStudyDescription: string
+	caseStudyLink?: string
+	year: string
+	className?: string
 }
 
-const CourseSection: React.FC<CourseSectionProps> = ({
-	title,
+const CourseSection: FC<CourseSectionProps> = ({
+	subject,
 	teacher,
 	section,
 	laboratoriesLink,
-	laboratoriesDescription,
 	caseStudyLink,
-	caseStudyDescription,
+	year,
+	className,
 }) => {
+	const fullSubjectName = subjectFullNames[subject] || subject
 	return (
-		<>
-			<h2 className="text-lg tracking-tighter font-semibold">{title}</h2>
-			<p className="mb-4">
-				<span className="font-semibold">Teacher</span>: {teacher}
+		<div className={cn("group p-8", className)}>
+			<h2 className="flex justify-between items-center text-lg tracking-tighter font-semibold">
+				{subject}
+				<span
+					aria-label="section"
+					className="text-sm font-semibold mt-0 text-muted-foreground group-hover:text-foreground transition-all"
+				>
+					section: {section}
+				</span>
+			</h2>
+			<p
+				aria-label="subject"
+				className="sr-only text-sm m-0 transition-all"
+			>
+				{fullSubjectName}
 			</p>
-			<p className="mb-4">
-				<span className="font-semibold">Section</span>: {section}
+			<p
+				aria-label="academic year"
+				className="text-sm m-0 text-muted-foreground group-hover:text-foreground transition-all"
+			>
+				{year}
+			</p>
+			<p
+				aria-label="teacher"
+				className="text-sm m-0 mb-4 text-muted-foreground group-hover:text-foreground transition-all"
+			>
+				{teacher}
 			</p>
 			{caseStudyLink ? (
-				<Tabs defaultValue="laboratories">
-					<TabsList>
-						<TabsTrigger value="laboratories">laboratories</TabsTrigger>
-						<TabsTrigger value="case-study">case study</TabsTrigger>
-					</TabsList>
-					<TabsContent value="laboratories">
-						<div className="my-6">
-							<Link href={laboratoriesLink}>
+				<>
+					<Tabs defaultValue="laboratories">
+						<ScrollArea>
+							<TabsList className="mb-3 bg-transparent">
+								<TabsTrigger
+									value="laboratories"
+									className="data-[state=active]:bg-muted data-[state=active]:shadow-none"
+								>
+									Lab
+								</TabsTrigger>
+								<TabsTrigger
+									value="case-study"
+									className="data-[state=active]:bg-muted data-[state=active]:shadow-none"
+								>
+									Case Study
+								</TabsTrigger>
+							</TabsList>
+							<ScrollBar orientation="horizontal" />
+						</ScrollArea>
+						<TabsContent
+							className="m-0"
+							value="laboratories"
+							asChild
+						>
+							<Link
+								className="text-sm"
+								href={laboratoriesLink}
+							>
 								laboratories
 								<ArrowRight className="inline size-4" />
 							</Link>
-							<p>{laboratoriesDescription}</p>
-						</div>
-					</TabsContent>
-					<TabsContent value="case-study">
-						<div className="my-6">
+						</TabsContent>
+						<TabsContent
+							className="m-0"
+							value="case-study"
+							asChild
+						>
 							<Link
 								href={caseStudyLink}
 								target="_blank"
 								rel="noreferrer"
+								className="text-sm"
 							>
 								{caseStudyLink}
 							</Link>
-							<p>{caseStudyDescription}</p>
-						</div>
-					</TabsContent>
-				</Tabs>
+						</TabsContent>
+					</Tabs>
+				</>
 			) : (
-				<div className="my-6">
-					<Link href={laboratoriesLink}>
-						laboratories
-						<ArrowRight className="inline size-4" />
-					</Link>
-					<p>{laboratoriesDescription}</p>
-				</div>
+				<Link
+					href={laboratoriesLink}
+					className="text-sm"
+				>
+					laboratories
+					<ArrowRight className="inline size-4" />
+				</Link>
 			)}
-			<hr className="my-10" />
-		</>
+		</div>
 	)
 }
 

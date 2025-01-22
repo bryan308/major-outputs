@@ -1,5 +1,5 @@
 import React from "react"
-import { allItwst01s, allItwst02s, allItpf01s } from "content-collections"
+import { allItwst01s, allItwst02s, allItpf01s, allItpf02s, allCc105s } from "content-collections"
 import { MDXContent } from "@content-collections/mdx/react"
 import { notFound } from "next/navigation"
 import Link from "next/link"
@@ -23,12 +23,14 @@ type Lab = {
 	mdx: string
 }
 
-type SubjectKeys = "itwst01" | "itwst02" | "itpf01"
+type SubjectKeys = "itwst01" | "itwst02" | "itpf01" | "itpf02" | "cc105"
 
 const subjectData: Record<SubjectKeys, Lab[]> = {
 	itwst01: allItwst01s,
 	itwst02: allItwst02s,
 	itpf01: allItpf01s,
+	itpf02: allItpf02s,
+	cc105: allCc105s,
 }
 
 export interface PageProps {

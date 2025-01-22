@@ -1,4 +1,4 @@
-import { allItwst01s, allItwst02s, allItpf01s } from "content-collections"
+import { allItwst01s, allItwst02s, allItpf01s, allItpf02s, allCc105s } from "content-collections"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { PageProps } from "./[slug]/page"
@@ -18,6 +18,8 @@ const subjectData: SubjectData = {
 	itwst01: allItwst01s,
 	itwst02: allItwst02s,
 	itpf01: allItpf01s,
+	itpf02: allItpf02s,
+	cc105: allCc105s,
 }
 
 export default async function SubjectPage({ params }: PageProps) {

@@ -30,6 +30,24 @@ export default function Home() {
 				caseStudyLink=""
 				caseStudyDescription=""
 			/>
+			<CourseSection
+				title="ITPF-02 / 2025"
+				teacher="Prince Mert Nicolas"
+				section="2A"
+				laboratoriesLink="/itpf02"
+				laboratoriesDescription="A collection of case problems from my 2nd year, 2nd semester, using java programming language."
+				caseStudyLink=""
+				caseStudyDescription=""
+			/>
+			<CourseSection
+				title="CC-105 / 2025"
+				teacher="Cris Norman Olipas"
+				section="2A"
+				laboratoriesLink="/cc105"
+				laboratoriesDescription=""
+				caseStudyLink=""
+				caseStudyDescription=""
+			/>
 		</>
 	)
 }

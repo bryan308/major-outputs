@@ -2,4 +2,129 @@
 title: Case 1
 ---
 
-test
+### Problem
+
+A store wants to manage its inventory of products across 3 branches.
+
+Write a program that will:
+
+1. Use a 2D array to store the stock quantities of each product in each branch.
+2. Allow the user to input the stock quantities for all products in all branches.
+3. Display the stock quantities in a tabular format.
+
+Calculate and display:
+
+**Total stock of each product across all branches**.
+
+**Totak stock in each branch**.
+
+**The overall stock in the store**.
+
+### Code
+
+```java title="Case1.java"
+package case1;
+
+import java.util.Scanner;
+
+public class Case1 {
+
+    public static void main(String[] args) {
+        Scanner kb = new Scanner(System.in); // Create a Scanner object for input
+        int[][] stock = new int[4][3]; // 2D array to store stock quantities for 4 branches and 3 products
+
+        // Input stock quantities
+        for (int branch = 0; branch < 4; branch++) { // Loop through each branch
+            System.out.println("Enter stock quantities for Branch " + (branch + 1) + ":");
+            for (int product = 0; product < 3; product++) { // Loop through each product
+                System.out.print("Product " + (product + 1) + ": ");
+                stock[branch][product] = kb.nextInt(); // Read stock quantity for the current product in the current branch
+            }
+        }
+        // Display stock quantities in tabular format
+        System.out.println("\nStock quantities:");
+        System.out.println("Branch\tProduct 1\tProduct 2\tProduct 3");
+        for (int branch = 0; branch < 4; branch++) { // Loop through each branch
+            System.out.print("Branch " + (branch + 1) + "\t");
+            for (int product = 0; product < 3; product++) { // Loop through each product
+                System.out.print(stock[branch][product] + "\t\t"); // Print stock quantity for the current product in the current branch
+            }
+            System.out.println(); // Move to the next line after printing all products for the current branch
+        }
+        // Calculate and display total stock of each product across all branches
+        int[] totalProductStock = new int[3]; // Array to store total stock for each product
+        for (int product = 0; product < 3; product++) { // Loop through each product
+            for (int branch = 0; branch < 4; branch++) { // Loop through each branch
+                totalProductStock[product] += stock[branch][product]; // Add stock quantity of the current product from the current branch to the total
+            }
+        }
+        System.out.println("\nTotal stock of each product across all branches:");
+        for (int product = 0; product < 3; product++) { // Loop through each product
+            System.out.println("Product " + (product + 1) + ": " + totalProductStock[product]); // Print total stock for the current product
+        }
+        // Calculate and display total stock in each branch
+        int[] totalBranchStock = new int[4]; // Array to store total stock for each branch
+        for (int branch = 0; branch < 4; branch++) { // Loop through each branch
+            for (int product = 0; product < 3; product++) { // Loop through each product
+                totalBranchStock[branch] += stock[branch][product]; // Add stock quantity of the current product froma the current branch to the total
+            }
+        }
+        System.out.println("\nTotal stock in each branch:");
+        for (int branch = 0; branch < 4; branch++) { // Loop through each branch
+            System.out.println("Branch " + (branch + 1) + ": " + totalBranchStock[branch]); // Print total stock for the current branch
+        }
+        // Calculate and display the overall stock in the store
+        int overallStock = 0; // Variable to store overall stock
+        for (int branch = 0; branch < 4; branch++) { // Loop through each branch
+            for (int product = 0; product < 3; product++) { // Loop through each product
+                overallStock += stock[branch][product]; // Add total stock of the current branch to the overall stock
+            }
+        }
+        System.out.println("\nOverall stock in the store: " + overallStock); // Print overall stock
+
+        kb.close(); // Close the Scanner object
+    }
+}
+```
+
+### Sample Ouput
+
+```console
+$ java case1_angulo.Case1
+Enter stock quantities for Branch 1:
+Product 1: 80
+Product 2: 34
+Product 3: 75
+Enter stock quantities for Branch 2:
+Product 1: 34
+Product 2: 76
+Product 3: 56
+Enter stock quantities for Branch 3:
+Product 1: 89
+Product 2: 67
+Product 3: 56
+Enter stock quantities for Branch 4:
+Product 1: 90
+Product 2: 75
+Product 3: 45
+
+Stock quantities:
+Branch  Product 1       Product 2       Product 3
+Branch 1        80              34              75
+Branch 2        34              76              56
+Branch 3        89              67              56
+Branch 4        90              75              45
+
+Total stock of each product across all branches:
+Product 1: 293
+Product 2: 252
+Product 3: 232
+
+Total stock in each branch:
+Branch 1: 189
+Branch 2: 166
+Branch 3: 212
+Branch 4: 210
+
+Overall stock in the store: 777
+```

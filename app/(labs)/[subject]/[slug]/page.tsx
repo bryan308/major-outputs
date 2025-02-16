@@ -12,6 +12,7 @@ import { ImageZoom } from "fumadocs-ui/components/image-zoom"
 import { Pre, CodeBlock } from "fumadocs-ui/components/codeblock"
 import { File, Folder, Files } from "fumadocs-ui/components/files"
 import { Tab, Tabs } from "fumadocs-ui/components/tabs"
+import { Plus } from "lucide-react"
 
 type Meta = {
 	path: string
@@ -51,50 +52,55 @@ export default async function Page({ params }: PageProps) {
 	}
 
 	return (
-		<>
+		<div className="relative border py-12">
+			<Plus className="absolute -top-[0.77rem] -right-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
+			<Plus className="absolute -top-[0.77rem] -left-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
+			<Plus className="absolute -bottom-[0.77rem] -left-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
+			<Plus className="absolute -bottom-[0.77rem] -right-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
 			<Link
 				href={`/${subject}`}
 				className="mx-auto block w-fit"
 			>
 				&larr; back
 			</Link>
-			<div className="mx-auto w-fit text-center">
-				<h2 className="text-2xl tracking-tighter mt-10 font-semibold">
+			<div className="mx-auto text-center mt-16 mb-4 pb-12 border-b">
+				<h2 className="text-2xl tracking-tighter font-semibold">
 					{formattedSubject.toUpperCase()}
 				</h2>
-				<h4 className="tracking-tighter font-semibold">{labItem.title}</h4>
+				<h4 className="tracking-tighter font-semibold mt-0">{labItem.title}</h4>
 			</div>
-			<Separator className="my-4" />
-			<MDXContent
-				code={labItem.mdx}
-				components={{
-					FileCard,
-					File,
-					Folder,
-					Files,
-					Tab,
-					Tabs,
-					pre: (props) => (
-						<CodeBlock {...props}>
-							<Pre>{props.children}</Pre>
-						</CodeBlock>
-					),
-					Image: (props) => (
-						<ImageZoom
-							{...props}
-							className="w-full block mx-auto mt-4 rounded-lg"
-						/>
-					),
-					hr: (props) => (
-						<Separator
-							{...props}
-							className="my-4"
-						/>
-					),
-				}}
-			/>
+			<div className="px-4">
+				<MDXContent
+					code={labItem.mdx}
+					components={{
+						FileCard,
+						File,
+						Folder,
+						Files,
+						Tab,
+						Tabs,
+						pre: (props) => (
+							<CodeBlock {...props}>
+								<Pre>{props.children}</Pre>
+							</CodeBlock>
+						),
+						Image: (props) => (
+							<ImageZoom
+								{...props}
+								className="w-full block mx-auto mt-4 rounded-lg"
+							/>
+						),
+						hr: (props) => (
+							<Separator
+								{...props}
+								className="my-4"
+							/>
+						),
+					}}
+				/>
+			</div>
 			<div className="mb-10 lg:mb-20" />
-		</>
+		</div>
 	)
 }
 

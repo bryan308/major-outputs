@@ -4,6 +4,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { PageProps } from "./[slug]/page"
 import { Metadata } from "next"
+import { Plus } from "lucide-react"
 
 type Lab = {
 	_meta: {
@@ -50,7 +51,11 @@ export default async function SubjectPage({ params }: PageProps) {
 			))
 
 	return (
-		<>
+		<div className="relative border py-12 px-4">
+			<Plus className="absolute -top-[0.77rem] -right-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
+			<Plus className="absolute -top-[0.77rem] -left-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
+			<Plus className="absolute -bottom-[0.77rem] -left-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
+			<Plus className="absolute -bottom-[0.77rem] -right-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
 			<Link
 				href="/"
 				className="mx-auto block w-fit"
@@ -62,7 +67,7 @@ export default async function SubjectPage({ params }: PageProps) {
 					labs.length > 0 && (
 						<div
 							key={category}
-							className="p-4 mt-10 mb-4"
+							className="mt-10"
 						>
 							<h2 className="text-center text-lg tracking-tighter font-semibold mb-6">
 								{category === "midtermLabs" ? "Midterms" : "Finals"}
@@ -73,7 +78,7 @@ export default async function SubjectPage({ params }: PageProps) {
 						</div>
 					)
 			)}
-		</>
+		</div>
 	)
 }
 

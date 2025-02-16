@@ -1,5 +1,12 @@
 import React from "react"
-import { allItwst01s, allItwst02s, allItpf01s, allItpf02s, allCc105s, allIthci01s } from "content-collections"
+import {
+	allItwst01s,
+	allItwst02s,
+	allItpf01s,
+	allItpf02s,
+	allCc105s,
+	allIthci01s,
+} from "content-collections"
 import { MDXContent } from "@content-collections/mdx/react"
 import { notFound } from "next/navigation"
 import Link from "next/link"
@@ -54,23 +61,25 @@ export default async function Page({ params }: PageProps) {
 	}
 
 	return (
-		<div className="relative border py-12">
+		<div className="relative border">
 			<Plus className="absolute -top-[0.77rem] -right-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
 			<Plus className="absolute -top-[0.77rem] -left-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
 			<Plus className="absolute -bottom-[0.77rem] -left-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
 			<Plus className="absolute -bottom-[0.77rem] -right-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
+			<div className="h-8 md:h-10 w-full mb-4 border-b col-start-2 row-span-5 row-start-1 border-x bg-[size:10px_10px] bg-fixed bg-[image:repeating-linear-gradient(315deg,hsl(var(--border))_0,hsl(var(--border))_1px,transparent_0,transparent_50%)]" />
 			<Link
 				href={`/${subject}`}
 				className="mx-auto block w-fit"
 			>
 				&larr; back
 			</Link>
-			<div className="mx-auto text-center mt-16 mb-4 pb-12 border-b">
+			<div className="mx-auto text-center mt-16 pb-12">
 				<h2 className="text-2xl tracking-tighter font-semibold">
 					{formattedSubject.toUpperCase()}
 				</h2>
 				<h4 className="tracking-tighter font-semibold mt-0">{labItem.title}</h4>
 			</div>
+			<div className="h-8 md:h-10 w-full mb-4 border-y col-start-2 row-span-5 row-start-1 border-x bg-[size:10px_10px] bg-fixed bg-[image:repeating-linear-gradient(315deg,hsl(var(--border))_0,hsl(var(--border))_1px,transparent_0,transparent_50%)]" />
 			<div className="px-2 md:px-4">
 				<MDXContent
 					code={labItem.mdx}
@@ -102,7 +111,7 @@ export default async function Page({ params }: PageProps) {
 					}}
 				/>
 			</div>
-			<div className="mb-10 lg:mb-20" />
+			<div className="h-8 md:h-10 w-full mt-12 border-t col-start-2 row-span-5 row-start-1 border-x bg-[size:10px_10px] bg-fixed bg-[image:repeating-linear-gradient(315deg,hsl(var(--border))_0,hsl(var(--border))_1px,transparent_0,transparent_50%)]" />
 		</div>
 	)
 }

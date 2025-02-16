@@ -61,7 +61,7 @@
 @layer base {
 	* {
 		/* outline: red dashed 2px; */
-		@apply border-border;
+		@apply border-border border-dashed;
 	}
 	body {
 		font-family: var(--font-geist-mono);

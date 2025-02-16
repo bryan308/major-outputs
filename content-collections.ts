@@ -15,6 +15,7 @@ const createCollection = (name: string, directory: string, plugins = []) => {
 		schema: (z) => ({
 			title: z.string(),
 			description: z.string().optional(),
+			draft: z.boolean().optional(),
 		}),
 		transform: async (document, context) => {
 			const mdx = await compileMDX(context, document, {
@@ -50,7 +51,8 @@ const itwst02 = createCollection("itwst02", "contents/itwst02")
 const itpf01 = createCollection("itpf01", "contents/itpf01")
 const itpf02 = createCollection("itpf02", "contents/itpf02")
 const cc105 = createCollection("cc105", "contents/cc105")
+const ithci01 = createCollection("ithci01", "contents/ithci01")
 
 export default defineConfig({
-	collections: [itwst01, itwst02, itpf01, itpf02, cc105],
+	collections: [itwst01, itwst02, itpf01, itpf02, cc105, ithci01],
 })

@@ -1,5 +1,5 @@
 import React from "react"
-import { allItwst01s, allItwst02s, allItpf01s, allItpf02s, allCc105s } from "content-collections"
+import { allItwst01s, allItwst02s, allItpf01s, allItpf02s, allCc105s, allIthci01s } from "content-collections"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { PageProps } from "./[slug]/page"
@@ -11,6 +11,7 @@ type Lab = {
 		path: string
 	}
 	title: string
+	draft?: boolean
 }
 
 type SubjectData = {
@@ -23,6 +24,7 @@ const subjectData: SubjectData = {
 	itpf01: allItpf01s,
 	itpf02: allItpf02s,
 	cc105: allCc105s,
+	ithci01: allIthci01s,
 }
 
 export default async function SubjectPage({ params }: PageProps) {
@@ -33,9 +35,11 @@ export default async function SubjectPage({ params }: PageProps) {
 		return notFound()
 	}
 
+	const filteredLabs = labs.filter((lab) => !lab.draft)
+
 	const labCategories = {
-		midtermLabs: labs.filter((lab) => lab._meta.path.startsWith("m-")),
-		finalLabs: labs.filter((lab) => lab._meta.path.startsWith("f-")),
+		midtermLabs: filteredLabs.filter((lab) => lab._meta.path.startsWith("m-")),
+		finalLabs: filteredLabs.filter((lab) => lab._meta.path.startsWith("f-")),
 	}
 
 	const renderLabs = (labs: Lab[]) =>
@@ -62,22 +66,32 @@ export default async function SubjectPage({ params }: PageProps) {
 			>
 				&larr; back
 			</Link>
-			{Object.entries(labCategories).map(
-				([category, labs]) =>
-					labs.length > 0 && (
-						<div
-							key={category}
-							className="mt-10"
-						>
-							<h2 className="text-center text-lg tracking-tighter font-semibold mb-6">
-								{category === "midtermLabs" ? "Midterms" : "Finals"}
-							</h2>
-							<div className="text-center grid grid-cols-2 md:grid-cols-3 gap-4">
-								{renderLabs(labs)}
-							</div>
+			{Object.entries(labCategories).map(([category, labs]) => {
+				const hasLabs = filteredLabs.length > 0
+				return labs.length > 0 ? (
+					<div
+						key={category}
+						className="mt-10"
+					>
+						<h2 className="text-center text-lg tracking-tighter font-semibold mb-6">
+							{category === "midtermLabs" ? "Midterms" : "Finals"}
+						</h2>
+						<div className="text-center grid grid-cols-2 md:grid-cols-3 gap-4">
+							{renderLabs(labs)}
 						</div>
-					)
-			)}
+					</div>
+				) : hasLabs ? null : (
+					<div
+						key={category}
+						className="mt-10"
+					>
+						<h2 className="text-center text-lg tracking-tighter font-semibold mb-6">
+							{category === "midtermLabs" ? "Midterms" : "Finals"}
+						</h2>
+						<div className="text-center text-sm text-destructive">No laboratory/case problems found.</div>
+					</div>
+				)
+			})}
 		</div>
 	)
 }

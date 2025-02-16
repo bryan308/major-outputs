@@ -60,7 +60,7 @@ export default function RootLayout({
 					<Header />
 					<main
 						role="main"
-						className="mx-auto max-w-4xl p-4"
+						className="mx-auto max-w-5xl p-4"
 					>
 						{children}
 					</main>

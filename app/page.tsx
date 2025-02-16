@@ -44,12 +44,20 @@ export default function Home() {
 					className="border-b lg:border-b-0 lg:border-r"
 				/>
 				<CourseSection
+					subject="IT-HCI01"
+					year="A.Y. 2024-2025 2nd sem"
+					teacher="Marcelino Collado Jr."
+					section="2A"
+					laboratoriesLink="/ithci01"
+					className="md:border-r border-b md:border-b-0"
+					/>
+				<CourseSection
 					subject="CC-105"
 					year="A.Y. 2024-2025 2nd sem"
 					teacher="Cris Norman Olipas"
 					section="2A"
 					laboratoriesLink="/cc105"
-					className="md:border-r"
+					className=""
 				/>
 			</div>
 		</>

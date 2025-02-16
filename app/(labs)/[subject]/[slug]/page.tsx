@@ -1,11 +1,12 @@
 import React from "react"
-import { allItwst01s, allItwst02s, allItpf01s, allItpf02s, allCc105s } from "content-collections"
+import { allItwst01s, allItwst02s, allItpf01s, allItpf02s, allCc105s, allIthci01s } from "content-collections"
 import { MDXContent } from "@content-collections/mdx/react"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Separator } from "@/components/ui/separator"
 import { Metadata } from "next"
 import FileCard from "@/components/shared/file-card"
+import ImageContainer from "@/components/shared/image-container"
 
 // fumadocs components
 import { ImageZoom } from "fumadocs-ui/components/image-zoom"
@@ -24,7 +25,7 @@ type Lab = {
 	mdx: string
 }
 
-type SubjectKeys = "itwst01" | "itwst02" | "itpf01" | "itpf02" | "cc105"
+type SubjectKeys = "itwst01" | "itwst02" | "itpf01" | "itpf02" | "cc105" | "ithci01"
 
 const subjectData: Record<SubjectKeys, Lab[]> = {
 	itwst01: allItwst01s,
@@ -32,6 +33,7 @@ const subjectData: Record<SubjectKeys, Lab[]> = {
 	itpf01: allItpf01s,
 	itpf02: allItpf02s,
 	cc105: allCc105s,
+	ithci01: allIthci01s,
 }
 
 export interface PageProps {
@@ -69,10 +71,11 @@ export default async function Page({ params }: PageProps) {
 				</h2>
 				<h4 className="tracking-tighter font-semibold mt-0">{labItem.title}</h4>
 			</div>
-			<div className="px-4">
+			<div className="px-2 md:px-4">
 				<MDXContent
 					code={labItem.mdx}
 					components={{
+						ImageContainer,
 						FileCard,
 						File,
 						Folder,
@@ -93,7 +96,7 @@ export default async function Page({ params }: PageProps) {
 						hr: (props) => (
 							<Separator
 								{...props}
-								className="my-4"
+								className="my-4 bg-transparent border-t border-dashed"
 							/>
 						),
 					}}

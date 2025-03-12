@@ -4,6 +4,7 @@ import {
 	allItwst02s,
 	allItpf01s,
 	allItpf02s,
+	allCc104s,
 	allCc105s,
 	allIthci01s,
 } from "content-collections"
@@ -32,13 +33,14 @@ type Lab = {
 	mdx: string
 }
 
-type SubjectKeys = "itwst01" | "itwst02" | "itpf01" | "itpf02" | "cc105" | "ithci01"
+type SubjectKeys = "itwst01" | "itwst02" | "itpf01" | "itpf02" | "cc104" | "cc105" | "ithci01"
 
 const subjectData: Record<SubjectKeys, Lab[]> = {
 	itwst01: allItwst01s,
 	itwst02: allItwst02s,
 	itpf01: allItpf01s,
 	itpf02: allItpf02s,
+	cc104: allCc104s,
 	cc105: allCc105s,
 	ithci01: allIthci01s,
 }

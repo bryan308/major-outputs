@@ -60,7 +60,7 @@
 
 @layer base {
 	* {
-		/* outline: red dashed 2px; */
+		/* outline: red dashed 1px; */
 		@apply border-border border-dashed;
 	}
 	body {
@@ -106,4 +106,16 @@
 	h4 {
 		@apply scroll-m-20 text-xl font-semibold tracking-tight mt-6 mb-2;
 	}
+}
+
+table {
+	@apply w-full my-4;
+}
+
+table th {
+	@apply border px-4 py-2;
+}
+
+table td {
+	@apply border px-4 py-2;
 }

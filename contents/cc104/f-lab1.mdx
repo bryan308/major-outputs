@@ -1,0 +1,184 @@
+---
+title: Laboratory 1
+---
+
+### Tasks
+
+1. Create a database named **Employee**.
+2. Create a table named **Tbl_Employee**.
+3. Insert the following data into **Tbl_Employee**.
+
+<div className="bg-background overflow-hidden rounded-md">
+
+| Employee ID | Name  | Position | Salary | Department |
+| :---------: | :---- | :------- | :----- | :--------- |
+| 101         | John  | Manager  | 25,000 | Sales      |
+| 102         | Sarah | Analyst  | 30,000 | Finance    |
+| 103         | Mike  | Developer| 35,000 | IT         |
+| 104         | Vince | Assistant| 20,000 | HR         |
+
+</div>
+
+4. Update the Salary of the employee with **Employee ID 101** to **30,000**.
+5. Add an Address column to the **Tbl_Employee** table.
+6. Update the Address of the employees, setting it to "**Sumacab, Cabanatuan City**".
+
+---
+
+### Output
+
+```terminal
+Setting environment for using XAMPP for Windows.
+CEDRIC@DESKTOP-0G7VTBI c:\xampp
+# cd mysql/bin
+
+CEDRIC@DESKTOP-0G7VTBI c:\xampp\mysql\bin
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE Employee;
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [(none)]> USE Employee;
+Database changed
+
+MariaDB [Employee]> CREATE TABLE Tbl_Employee (
+    -> Employee_ID INT,
+    -> Name VARCHAR(50),
+    -> Position VARCHAR(50),
+    -> Salary INT(10),
+    -> Department VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.009 sec)
+
+MariaDB [Employee]> INSERT INTO Tbl_Employee (Employee_ID, Name, Position, Salary, Department)
+    -> VALUES
+    -> (101, 'John', 'Manager', 25000, 'Sales'),
+    -> (102, 'Sarah', 'Analyst', 30000, 'Finance'),
+    -> (103, 'Mike', 'Developer', 35000, 'IT'),
+    -> (104, 'Vince', 'Assistant', 20000, 'HR');
+Query OK, 4 rows affected (0.188 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [Employee]> SELECT * FROM Tbl_Employee;
++-------------+-------+-----------+--------+------------+
+| Employee_ID | Name  | Position  | Salary | Department |
++-------------+-------+-----------+--------+------------+
+|         101 | John  | Manager   |  25000 | Sales      |
+|         102 | Sarah | Analyst   |  30000 | Finance    |
+|         103 | Mike  | Developer |  35000 | IT         |
+|         104 | Vince | Assistant |  20000 | HR         |
++-------------+-------+-----------+--------+------------+
+4 rows in set (0.002 sec)
+
+MariaDB [Employee]> UPDATE Tbl_Employee
+    -> SET Salary = 30000
+    -> WHERE Employee_ID = 101;
+Query OK, 1 row affected (0.011 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [Employee]> SELECT * FROM Tbl_Employee;
++-------------+-------+-----------+--------+------------+
+| Employee_ID | Name  | Position  | Salary | Department |
++-------------+-------+-----------+--------+------------+
+|         101 | John  | Manager   |  30000 | Sales      |
+|         102 | Sarah | Analyst   |  30000 | Finance    |
+|         103 | Mike  | Developer |  35000 | IT         |
+|         104 | Vince | Assistant |  20000 | HR         |
++-------------+-------+-----------+--------+------------+
+4 rows in set (0.001 sec)
+
+MariaDB [Employee]> ALTER TABLE Tbl_Employee
+    -> ADD COLUMN Address VARCHAR(100);
+Query OK, 0 rows affected (0.017 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [Employee]> DESCRIBE Tbl_Employee;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| Employee_ID | int(11)      | YES  |     | NULL    |       |
+| Name        | varchar(50)  | YES  |     | NULL    |       |
+| Position    | varchar(50)  | YES  |     | NULL    |       |
+| Salary      | int(10)      | YES  |     | NULL    |       |
+| Department  | varchar(50)  | YES  |     | NULL    |       |
+| Address     | varchar(100) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+6 rows in set (0.017 sec)
+
+MariaDB [Employee]> UPDATE Tbl_Employee
+    -> SET Address = 'Sumacab, Cabanatuan City';
+Query OK, 4 rows affected (0.010 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+MariaDB [Employee]> SELECT * FROM Tbl_Employee;
++-------------+-------+-----------+--------+------------+--------------------------+
+| Employee_ID | Name  | Position  | Salary | Department | Address                  |
++-------------+-------+-----------+--------+------------+--------------------------+
+|         101 | John  | Manager   |  30000 | Sales      | Sumacab, Cabanatuan City |
+|         102 | Sarah | Analyst   |  30000 | Finance    | Sumacab, Cabanatuan City |
+|         103 | Mike  | Developer |  35000 | IT         | Sumacab, Cabanatuan City |
+|         104 | Vince | Assistant |  20000 | HR         | Sumacab, Cabanatuan City |
++-------------+-------+-----------+--------+------------+--------------------------+
+4 rows in set (0.001 sec)
+
+MariaDB [Employee]> Bye
+```
+
+---
+
+### Queries Used for the Output
+
+```sql
+-- 
+CREATE DATABASE Employee;
+-- 
+USE Employee;
+-- 
+CREATE TABLE Tbl_Employee (
+    Employee_ID INT,
+    Name VARCHAR(50),
+    Position VARCHAR(50),
+    Salary INT(10),
+    Department VARCHAR(50)
+);
+-- 
+INSERT INTO Tbl_Employee (Employee_ID, Name, Position, Salary, Department)
+VALUES
+(101, 'John', 'Manager', 25000, 'Sales'),
+(102, 'Sarah', 'Analyst', 30000, 'Finance'),
+(103, 'Mike', 'Developer', 35000, 'IT'),
+(104, 'Vince', 'Assistant', 20000, 'HR');
+-- 
+SELECT * FROM Tbl_Employee;
+-- 
+UPDATE Tbl_Employee
+SET Salary = 30000
+WHERE Employee_ID = 101;
+-- 
+SELECT * FROM Tbl_Employee;
+-- 
+ALTER TABLE Tbl_Employee
+ADD COLUMN Address VARCHAR(100);
+-- 
+DESCRIBE Tbl_Employee;
+-- 
+UPDATE Tbl_Employee
+SET Address = 'Sumacab, Cabanatuan City';
+-- 
+SELECT * FROM Tbl_Employee;
+
+```
+
+---
+
+👽 First to finish in class
+
+📝 SQL Queries are not provided while doing the activity

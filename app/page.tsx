@@ -41,7 +41,7 @@ export default function Home() {
 					teacher="Prince Mert Nicolas"
 					section="2A"
 					laboratoriesLink="/itpf02"
-					className="border-b lg:border-b-0 lg:border-r"
+					className="border-b lg:border-b lg:border-r"
 				/>
 				<CourseSection
 					subject="IT-HCI01"
@@ -49,15 +49,23 @@ export default function Home() {
 					teacher="Marcelino Collado Jr."
 					section="2A"
 					laboratoriesLink="/ithci01"
-					className="md:border-r border-b md:border-b-0"
+					className="md:border-r border-b md:border-b"
 					/>
+				<CourseSection
+					subject="CC-104"
+					year="A.Y. 2024-2025 2nd sem"
+					teacher="Apple Oliveros"
+					section="2A"
+					laboratoriesLink="/cc104"
+					className="border-b"
+				/>
 				<CourseSection
 					subject="CC-105"
 					year="A.Y. 2024-2025 2nd sem"
 					teacher="Cris Norman Olipas"
 					section="2A"
 					laboratoriesLink="/cc105"
-					className=""
+					className="md:border-r"
 				/>
 			</div>
 		</>

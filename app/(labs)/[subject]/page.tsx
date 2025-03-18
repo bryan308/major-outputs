@@ -4,6 +4,7 @@ import {
 	allItwst02s,
 	allItpf01s,
 	allItpf02s,
+	allCc104s,
 	allCc105s,
 	allIthci01s,
 } from "content-collections"
@@ -30,6 +31,7 @@ const subjectData: SubjectData = {
 	itwst02: allItwst02s,
 	itpf01: allItpf01s,
 	itpf02: allItpf02s,
+	cc104: allCc104s,
 	cc105: allCc105s,
 	ithci01: allIthci01s,
 }

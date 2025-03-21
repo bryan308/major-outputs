@@ -1,0 +1,293 @@
+---
+title: Laboratory 2
+---
+
+### Tasks
+
+1. Create database CC104_your section.
+
+2. Create table tblstudent with this structure.
+
+| ATTRIBUTE NAME (FIELD NAME)  |              |
+| ---------------------------- | ------------ |
+| Stud_ID                      | INT(10)      |
+| LNAME                        | VARCHAR(20)  |
+| FNAME                        | VARCHAR(20)  |
+| INITIAL                      | CHAR(2)      |
+| AGE                          | INT(3)       |
+| ADDRESS                      | VARCHAR(50)  |
+| SUBJCODE                     | CHAR(10)     |
+| GRADE                        | DECIMAL(3, 2)|
+
+3. Create the following table with the following attributes and data field (20pts).
+
+| Stud_ID  | Lname    | Fname       | Initial | Age | Address         | Subjcode | Grade |
+| -------- | -------- | ----------- | ------- | --- | --------------- | -------- | ----- |
+| 20171000 | Galang   | Apple Grace | S.      | 24  | Jaen N.E        | CC100    | 1.75  |
+| 20172015 | Santos   | Maria Ann   | G.      | 21  | Palayan N.E     | ITP07    | 2.00  |
+| 20172058 | Marcos   | Ferdie      | S.      | 28  | Cabanatuan City | TRIGO23  | 2.25  |
+| 20172301 | Torres   | Julian      | G.      | 18  | Cabanatuan City | MATH34   | 1.75  |
+| 20172548 | Yap      | Sally       | A.      | 20  | Cabanatuan City | ITP08    | 2.00  |
+| 20180012 | Villegas | Drew        | G.      | 17  | Palayan City    | CC101    | 1.50  |
+| 20181478 | Manuel   | Rhea        | C.      | 19  | Palayan City    | ITP06    | 2.00  |
+| 20182587 | Payumo   | Emerson     | D.      | 20  | Jaen N.E        | TRIGO23  | 2.00  |
+| 20185231 | Galang   | Grace       | G.      | 18  | San. Isidro N.E | MATH34   | 2.25  |
+| 20187485 | Flores   | Flo         | D.      | 21  | Palayan City    | MATH34   | 1.50  |
+
+---
+
+### Query
+
+**Query 1**. List the student's name with a grade higher than 2.00 (in this grading system, 1.00 is the highest grade).
+
+**Query 2**. Display all the students whose first name has the letter E at the end of their First name.
+
+**Query 3**. List the student's whose age is greater than 20 and with a grade lower than 2.00 (in this grading system, 1.00 is the highest grade).
+
+**Query 4**. List the student's name taking up Math34.
+
+**Query 5**. List the name of the student who lives in Cabanatuan City.
+
+**Query 6**. List all students who are not living in Cabanatuan City.
+
+**Query 7**. List all the students whose ages range from 15 to 20.
+
+**Query 8**. List all the students whose initial is G. and who live in Palayan City.
+
+---
+
+### Output
+
+```terminal
+Setting environment for using XAMPP for Windows.
+CEDRIC@DESKTOP-0G7VTBI c:\xampp
+# cd mysql/bin
+
+CEDRIC@DESKTOP-0G7VTBI c:\xampp\mysql\bin
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE cc104_2a;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> USE cc104_2a;
+Database changed
+
+MariaDB [cc104_2a]> CREATE TABLE tblstudent (
+    ->     Stud_ID INT(10),
+    ->     LNAME VARCHAR(20),
+    ->     FNAME VARCHAR(20),
+    ->     INITIAL CHAR(2),
+    ->     AGE INT(3),
+    ->     ADDRESS VARCHAR(50),
+    ->     SUBJCODE CHAR(10),
+    ->     GRADE DECIMAL(3,2)
+    -> );
+Query OK, 0 rows affected (0.009 sec)
+
+MariaDB [cc104_2a]> DESCRIBE tblstudent;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| Stud_ID  | int(10)      | YES  |     | NULL    |       |
+| LNAME    | varchar(20)  | YES  |     | NULL    |       |
+| FNAME    | varchar(20)  | YES  |     | NULL    |       |
+| INITIAL  | char(2)      | YES  |     | NULL    |       |
+| AGE      | int(3)       | YES  |     | NULL    |       |
+| ADDRESS  | varchar(50)  | YES  |     | NULL    |       |
+| SUBJCODE | char(10)     | YES  |     | NULL    |       |
+| GRADE    | decimal(3,2) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+8 rows in set (0.382 sec)
+
+MariaDB [cc104_2a]> INSERT INTO tblstudent (Stud_ID, LNAME, FNAME, INITIAL, AGE, ADDRESS, SUBJCODE, GRADE) VALUES
+    -> (20171000, 'Galang', 'Apple Grace', 'S.', 24, 'Jaen N.E', 'CC100', 1.75),
+    -> (20172015, 'Santos', 'Maria Ann', 'G.', 21, 'Palayan N.E', 'ITP07', 2.00),
+    -> (20172058, 'Marcos', 'Ferdie', 'S.', 28, 'Cabanatuan City', 'TRIGO23', 2.25),
+    -> (20172548, 'Yap', 'Sally', 'A.', 20, 'Cabanatuan City', 'ITP08', 2.00),
+    -> (20172301, 'Torres', 'Julian', 'G.', 18, 'Cabanatuan City', 'MATH34', 1.75),
+    -> (20181478, 'Manuel', 'Rhea', 'C.', 19, 'Palayan City', 'ITP06', 2.00),
+    -> (20185231, 'Galang', 'Grace', 'G.', 18, 'San. Isidro N.E', 'MATH34', 2.25),
+    -> (20182587, 'Payumo', 'Emerson', 'D.', 20, 'Jaen N.E', 'TRIGO23', 2.00),
+    -> (20180012, 'Villegas', 'Drew', 'G.', 17, 'Palayan City', 'CC101', 1.50),
+    -> (20187485, 'Flores', 'Flo', 'D.', 21, 'Palayan City', 'MATH34', 1.50);
+Query OK, 10 rows affected (0.088 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+MariaDB [cc104_2a]> SELECT * FROM tblstudent;
++----------+----------+-------------+---------+------+-----------------+----------+-------+
+| Stud_ID  | LNAME    | FNAME       | INITIAL | AGE  | ADDRESS         | SUBJCODE | GRADE |
++----------+----------+-------------+---------+------+-----------------+----------+-------+
+| 20171000 | Galang   | Apple Grace | S.      |   24 | Jaen N.E        | CC100    |  1.75 |
+| 20172015 | Santos   | Maria Ann   | G.      |   21 | Palayan N.E     | ITP07    |  2.00 |
+| 20172058 | Marcos   | Ferdie      | S.      |   28 | Cabanatuan City | TRIGO23  |  2.25 |
+| 20172301 | Torres   | Julian      | G.      |   18 | Cabanatuan City | MATH34   |  1.75 |
+| 20172548 | Yap      | Sally       | A.      |   20 | Cabanatuan City | ITP08    |  2.00 |
+| 20180012 | Villegas | Drew        | G.      |   17 | Palayan City    | CC101    |  1.50 |
+| 20181478 | Manuel   | Rhea        | C.      |   19 | Palayan City    | ITP06    |  2.00 |
+| 20182587 | Payumo   | Emerson     | D.      |   20 | Jaen N.E        | TRIGO23  |  2.00 |
+| 20185231 | Galang   | Grace       | G.      |   18 | San. Isidro N.E | MATH34   |  2.25 |
+| 20187485 | Flores   | Flo         | D.      |   21 | Palayan City    | MATH34   |  1.50 |
++----------+----------+-------------+---------+------+-----------------+----------+-------+
+10 rows in set (0.000 sec)
+
+MariaDB [cc104_2a]> SELECT FNAME, LNAME FROM tblstudent WHERE GRADE < 2.00;
++-------------+----------+
+| FNAME       | LNAME    |
++-------------+----------+
+| Apple Grace | Galang   |
+| Julian      | Torres   |
+| Drew        | Villegas |
+| Flo         | Flores   |
++-------------+----------+
+4 rows in set (0.000 sec)
+
+MariaDB [cc104_2a]> SELECT FNAME FROM tblstudent WHERE FNAME LIKE '%E';
++-------------+
+| FNAME       |
++-------------+
+| Apple Grace |
+| Ferdie      |
+| Grace       |
++-------------+
+3 rows in set (0.001 sec)
+
+MariaDB [cc104_2a]> SELECT * FROM tblstudent WHERE AGE > 20 AND GRADE > 2.00;
++----------+--------+--------+---------+------+-----------------+----------+-------+
+| Stud_ID  | LNAME  | FNAME  | INITIAL | AGE  | ADDRESS         | SUBJCODE | GRADE |
++----------+--------+--------+---------+------+-----------------+----------+-------+
+| 20172058 | Marcos | Ferdie | S.      |   28 | Cabanatuan City | TRIGO23  |  2.25 |
++----------+--------+--------+---------+------+-----------------+----------+-------+
+1 row in set (0.000 sec)
+
+MariaDB [cc104_2a]> SELECT FNAME, LNAME FROM tblstudent WHERE SUBJCODE = 'MATH34';
++--------+--------+
+| FNAME  | LNAME  |
++--------+--------+
+| Julian | Torres |
+| Grace  | Galang |
+| Flo    | Flores |
++--------+--------+
+3 rows in set (0.000 sec)
+
+MariaDB [cc104_2a]> SELECT FNAME, LNAME FROM tblstudent WHERE ADDRESS = 'Cabanatuan City';
++--------+--------+
+| FNAME  | LNAME  |
++--------+--------+
+| Ferdie | Marcos |
+| Julian | Torres |
+| Sally  | Yap    |
++--------+--------+
+3 rows in set (0.000 sec)
+
+MariaDB [cc104_2a]> SELECT * FROM tblstudent WHERE ADDRESS != 'Cabanatuan City';
++----------+----------+-------------+---------+------+-----------------+----------+-------+
+| Stud_ID  | LNAME    | FNAME       | INITIAL | AGE  | ADDRESS         | SUBJCODE | GRADE |
++----------+----------+-------------+---------+------+-----------------+----------+-------+
+| 20171000 | Galang   | Apple Grace | S.      |   24 | Jaen N.E        | CC100    |  1.75 |
+| 20172015 | Santos   | Maria Ann   | G.      |   21 | Palayan N.E     | ITP07    |  2.00 |
+| 20180012 | Villegas | Drew        | G.      |   17 | Palayan City    | CC101    |  1.50 |
+| 20181478 | Manuel   | Rhea        | C.      |   19 | Palayan City    | ITP06    |  2.00 |
+| 20182587 | Payumo   | Emerson     | D.      |   20 | Jaen N.E        | TRIGO23  |  2.00 |
+| 20185231 | Galang   | Grace       | G.      |   18 | San. Isidro N.E | MATH34   |  2.25 |
+| 20187485 | Flores   | Flo         | D.      |   21 | Palayan City    | MATH34   |  1.50 |
++----------+----------+-------------+---------+------+-----------------+----------+-------+
+7 rows in set (0.000 sec)
+
+MariaDB [cc104_2a]> SELECT * FROM tblstudent WHERE AGE BETWEEN 15 AND 20;
++----------+----------+---------+---------+------+-----------------+----------+-------+
+| Stud_ID  | LNAME    | FNAME   | INITIAL | AGE  | ADDRESS         | SUBJCODE | GRADE |
++----------+----------+---------+---------+------+-----------------+----------+-------+
+| 20172301 | Torres   | Julian  | G.      |   18 | Cabanatuan City | MATH34   |  1.75 |
+| 20172548 | Yap      | Sally   | A.      |   20 | Cabanatuan City | ITP08    |  2.00 |
+| 20180012 | Villegas | Drew    | G.      |   17 | Palayan City    | CC101    |  1.50 |
+| 20181478 | Manuel   | Rhea    | C.      |   19 | Palayan City    | ITP06    |  2.00 |
+| 20182587 | Payumo   | Emerson | D.      |   20 | Jaen N.E        | TRIGO23  |  2.00 |
+| 20185231 | Galang   | Grace   | G.      |   18 | San. Isidro N.E | MATH34   |  2.25 |
++----------+----------+---------+---------+------+-----------------+----------+-------+
+6 rows in set (0.000 sec)
+
+MariaDB [cc104_2a]> SELECT * FROM tblstudent WHERE INITIAL = 'G.' AND ADDRESS = 'Palayan City';
++----------+----------+-------+---------+------+--------------+----------+-------+
+| Stud_ID  | LNAME    | FNAME | INITIAL | AGE  | ADDRESS      | SUBJCODE | GRADE |
++----------+----------+-------+---------+------+--------------+----------+-------+
+| 20180012 | Villegas | Drew  | G.      |   17 | Palayan City | CC101    |  1.50 |
++----------+----------+-------+---------+------+--------------+----------+-------+
+1 row in set (0.000 sec)
+
+MariaDB [cc104_2a]> Bye
+```
+
+---
+
+### SQL Queries Used
+
+```sql
+--- Task 1
+CREATE DATABASE cc104_2a;
+
+USE cc104_2a;
+
+--- Task 2
+CREATE TABLE tblstudent (
+    Stud_ID INT(10),
+    LNAME VARCHAR(20),
+    FNAME VARCHAR(20),
+    INITIAL CHAR(2),
+    AGE INT(3),
+    ADDRESS VARCHAR(50),
+    SUBJCODE CHAR(10),
+    GRADE DECIMAL(3, 2)
+);
+
+--- Task 3
+INSERT INTO tblstudent (Stud_ID, LNAME, FNAME, INITIAL, AGE, ADDRESS, SUBJCODE, GRADE) VALUES
+(20171000, 'Galang', 'Apple Grace', 'S.', 24, 'Jaen N.E', 'CC100', 1.75),
+(20172015, 'Santos', 'Maria Ann', 'G.', 21, 'Palayan N.E', 'ITP07', 2.00),
+(20172058, 'Marcos', 'Ferdie', 'S.', 28, 'Cabanatuan City', 'TRIGO23', 2.25),
+(20172548, 'Yap', 'Sally', 'A.', 20, 'Cabanatuan City', 'ITP08', 2.00),
+(20172301, 'Torres', 'Julian', 'G.', 18, 'Cabanatuan City', 'MATH34', 1.75),
+(20181478, 'Manuel', 'Rhea', 'C.', 19, 'Palayan City', 'ITP06', 2.00),
+(20185231, 'Galang', 'Grace', 'G.', 18, 'San. Isidro N.E', 'MATH34', 2.25),
+(20182587, 'Payumo', 'Emerson', 'D.', 20, 'Jaen N.E', 'TRIGO23', 2.00),
+(20180012, 'Villegas', 'Drew', 'G.', 17, 'Palayan City', 'CC101', 1.50),
+(20187485, 'Flores', 'Flo', 'D.', 21, 'Palayan City', 'MATH34', 1.50);
+
+--- Show Table
+SELECT * FROM tblstudent;
+
+--- Show Table Structure
+DESCRIBE tblstudent;
+
+--- Query 1
+SELECT FNAME, LNAME FROM tblstudent WHERE GRADE < 2.00;
+
+--- Query 2
+SELECT * FROM tblstudent WHERE FNAME LIKE '%E';
+
+--- Query 3
+SELECT * FROM tblstudent WHERE AGE > 20 AND GRADE < 2.00;
+
+--- Query 4
+SELECT FNAME, LNAME FROM tblstudent WHERE SUBJCODE = 'MATH34';
+
+--- Query 5
+SELECT FNAME, LNAME FROM tblstudent WHERE ADDRESS = 'Cabanatuan City';
+
+--- Query 6
+SELECT * FROM tblstudent WHERE ADDRESS != 'Cabanatuan City';
+
+--- Query 7
+SELECT * FROM tblstudent WHERE AGE BETWEEN 15 AND 20;
+
+--- Query 8
+SELECT * FROM tblstudent WHERE INITIAL = 'G.' AND ADDRESS = 'Palayan City';
+
+```

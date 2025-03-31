@@ -2,7 +2,7 @@ import { FC } from "react"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { cn } from "@/lib/utils"
-import { ArrowRight } from "@mynaui/icons-react"
+import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 const subjectFullNames: { [key: string]: string } = {

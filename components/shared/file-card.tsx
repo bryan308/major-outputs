@@ -1,7 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
-import { File } from "@mynaui/icons-react"
 
 function FileCard({
 	fileName,
@@ -24,7 +23,8 @@ function FileCard({
 						className="bg-cover min-w-14"
 					/>
 				) : (
-					<File className="size-6 m-4" />
+					<></>
+					// <File className="size-6 m-4" />
 				)}
 			</div>
 			<div className="p-2 overflow-hidden truncate">

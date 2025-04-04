@@ -69,14 +69,14 @@ export default async function SubjectPage({ params }: PageProps) {
 			<Plus className="absolute -top-[0.77rem] -left-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
 			<Plus className="absolute -bottom-[0.77rem] -left-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
 			<Plus className="absolute -bottom-[0.77rem] -right-[0.77rem] size-6 text-muted-foreground stroke-1 z-10" />
-			<div className="h-8 md:h-10 w-full mb-4 border-b col-start-2 row-span-5 row-start-1 border-x bg-[size:10px_10px] bg-fixed bg-[image:repeating-linear-gradient(315deg,hsl(var(--border))_0,hsl(var(--border))_1px,transparent_0,transparent_50%)]" />
+			<div className="h-8 md:h-10 w-full mb-4 col-start-2 row-span-5 row-start-1 border-b bg-[image:repeating-linear-gradient(315deg,_var(--border)_0,_var(--border)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed" />
 			<Link
 				href="/"
 				className="mx-auto block w-fit"
 			>
 				&larr; back
 			</Link>
-			<div className="h-8 md:h-10 w-full mb-4 mt-12 border-y col-start-2 row-span-5 row-start-1 border-x bg-[size:10px_10px] bg-fixed bg-[image:repeating-linear-gradient(315deg,hsl(var(--border))_0,hsl(var(--border))_1px,transparent_0,transparent_50%)]" />
+			<div className="h-8 md:h-10 w-full mb-4 mt-12 col-start-2 row-span-5 row-start-1 border-y bg-[image:repeating-linear-gradient(315deg,_var(--border)_0,_var(--border)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed" />
 			{Object.entries(labCategories).map(([category, labs]) => {
 				const hasLabs = filteredLabs.length > 0
 				return labs.length > 0 ? (
@@ -105,7 +105,7 @@ export default async function SubjectPage({ params }: PageProps) {
 					</div>
 				)
 			})}
-			<div className="h-8 md:h-10 w-full mt-12 border-t col-start-2 row-span-5 row-start-1 border-x bg-[size:10px_10px] bg-fixed bg-[image:repeating-linear-gradient(315deg,hsl(var(--border))_0,hsl(var(--border))_1px,transparent_0,transparent_50%)]" />
+			<div className="h-8 md:h-10 w-full mt-12 col-start-2 row-span-5 row-start-1 border-t bg-[image:repeating-linear-gradient(315deg,_var(--border)_0,_var(--border)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed" />
 		</div>
 	)
 }

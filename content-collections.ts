@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeSlug from "rehype-slug"
 import rehypePresetMinify from "rehype-preset-minify"
-import { rehypeCode } from "fumadocs-core/mdx-plugins"
+// import { rehypeCode } from "fumadocs-core/mdx-plugins"
 
 const createCollection = (name: string, directory: string, plugins = []) => {
 	return defineCollection({
@@ -20,9 +20,8 @@ const createCollection = (name: string, directory: string, plugins = []) => {
 		transform: async (document, context) => {
 			const mdx = await compileMDX(context, document, {
 				remarkPlugins: [remarkGfm],
-				// rehypePlugins: [],
 				rehypePlugins: [
-					rehypeCode,
+					// rehypeCode,
 					rehypeSlug,
 					[
 						rehypeAutolinkHeadings,

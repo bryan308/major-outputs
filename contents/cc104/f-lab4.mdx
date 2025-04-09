@@ -1,0 +1,287 @@
+---
+title: Laboratory 4
+---
+
+1. Create a Database, the database name is your nickname.
+2. Create a Table with this structure with table name tblEmployee:
+
+| Field      | Type        | Null |
+|------------|-------------|:----:|
+| FacultyId  | INT(20)     | NO   |
+| Surname    | VARCHAR(25) | YES  |
+| Fname      | VARCHAR(25) | YES  |
+| MI         | CHAR(3)     | YES  |
+| Rank       | VARCHAR(15) | YES  |
+| College    | CHAR(5)     | YES  |
+
+3. Insert another column with column name DateHired. Place it before the Rank.
+4. Change the column name of Fname to FirstName
+5. Insert table the following record.
+
+<div className="bg-background overflow-x-auto rounded-md">
+
+| FacultyId | Surname   | FirstName    | MI  | DateHired  | Rank            | College |
+|:----------|:----------|:-------------|:----|:-----------|:----------------|:--------|
+| 120       | Oliveros  | Apple Grace  | G.  | 2009-08-19 | Instructor III  | CICT    |
+| 78        | Alcantara | Gloria       | M.  | 1996-06-19 | Asso. Prof. III | CICT    |
+| 125       | Santos    | Ruth Ann     | G.  | 2005-07-20 | Instructor I    | CICT    |
+| 154       | Montes    | John Dave    |     | 2005-09-18 | Asso. Prof II   | COE     |
+| 100       | Dela Cruz | Maine        | G.  | 2008-10-10 | Asso. Prof II   | COED    |
+| 101       | Torres    | Hilton James | G.  | 1999-10-19 | Asst. Prof II   | COED    |
+| 201       | Santos    | John Patrick | G.  | 2003-12-28 | Instructor I    | CMBT    |
+| 222       | Montes    | Harley Joy   | F.  | 2018-09-20 | Asst. Prof I    | CMBT    |
+| 228       | Salvador  | Gerlie       | D.  | 2009-10-10 | Asso. Prof III  | COC     |
+| 111       | Papa      | Harold       | T.  | 2019-10-19 | Instructor II   | COA     |
+
+</div>
+
+6. Query
+  - Display the faculty details who belong to the college CICT.
+  - Display the faculty details that were hired from 2003-01-30 to 2020-12-31.
+  - Display the name of the faculty that has n in their FirstName.
+  - Change the FirstName of FacultyId 228 to Gereldine.
+  - Delete the record of the faculty that Surname is Santos.
+  - Display the faculty that has a rank of Asso. Prof. 1 to Asso. Prof. IV.
+
+#### Output
+
+```terminal
+Setting environment for using XAMPP for Windows.
+CEDRIC@DESKTOP-0G7VTBI c:\xampp
+# cd mysql/bin
+
+CEDRIC@DESKTOP-0G7VTBI c:\xampp\mysql\bin
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE ced;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> USE ced;
+Database changed
+
+MariaDB [ced]> CREATE TABLE tblEmployee (
+    ->     FacultyID INT(20) NOT NULL,
+    ->     Surname VARCHAR(25),
+    ->     Fname VARCHAR(25),
+    ->     MI CHAR(3),
+    ->     Rank VARCHAR(15),
+    ->     College CHAR(5)
+    -> );
+Query OK, 0 rows affected (0.010 sec)
+
+MariaDB [ced]> DESCRIBE tblEmployee;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| FacultyID | int(20)     | NO   |     | NULL    |       |
+| Surname   | varchar(25) | YES  |     | NULL    |       |
+| Fname     | varchar(25) | YES  |     | NULL    |       |
+| MI        | char(3)     | YES  |     | NULL    |       |
+| Rank      | varchar(15) | YES  |     | NULL    |       |
+| College   | char(5)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+6 rows in set (0.019 sec)
+
+
+MariaDB [ced]> ALTER TABLE tblEmployee ADD COLUMN DateHired Date AFTER MI;
+Query OK, 0 rows affected (0.010 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [ced]> DESCRIBE tblEmployee;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| FacultyID | int(20)     | NO   |     | NULL    |       |
+| Surname   | varchar(25) | YES  |     | NULL    |       |
+| Fname     | varchar(25) | YES  |     | NULL    |       |
+| MI        | char(3)     | YES  |     | NULL    |       |
+| DateHired | date        | YES  |     | NULL    |       |
+| Rank      | varchar(15) | YES  |     | NULL    |       |
+| College   | char(5)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+6 rows in set (0.019 sec)
+
+MariaDB [ced]> INSERT INTO tblEmployee (FacultyID, Surname, FirstName, MI, DateHired, Rank, College) VALUES
+    -> (120, 'Oliveros', 'Apple Grace', 'G.', '2009-08-19', 'Instructor III', 'CICT'),
+    -> (78, 'Alcantara', 'Gloria', 'M.', '1996-06-19', 'Asso. Prof III', 'CICT'),
+    -> (125, 'Santos', 'Ruth Ann', 'G.', '2005-07-20', 'Instructor I', 'CICT'),
+    -> (154, 'Montes', 'John Dave', NULL, '2005-09-18', 'Asso. Prof II', 'COE'),
+    -> (100, 'Dela Cruz', 'Maine', 'G.', '2008-10-10', 'Asso. Prof II', 'COED'),
+    -> (101, 'Torres', 'Hilton James', 'G.', '1999-10-19', 'Asst. Prof II', 'COED'),
+    -> (201, 'Santos', 'John Patrick', 'G.', '2003-12-28', 'Instructor I', 'CMBT'),
+    -> (222, 'Montes', 'Harley Joy', 'F.', '2018-09-20', 'Asst. Prof I', 'CMBT'),
+    -> (228, 'Salvador', 'Gerlie', 'D.', '2009-10-10', 'Asso. Prof III', 'COC'),
+    -> (111, 'Papa', 'Harold', 'T.', '2019-10-19', 'Instructor II', 'COA');
+Query OK, 10 rows affected (0.003 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+MariaDB [ced]> SELECT * FROM tblEmployee;
++-----------+-----------+--------------+------+------------+-----------------+---------+
+| FacultyID | Surname   | FirstName    | MI   | DateHired  | Rank            | College |
++-----------+-----------+--------------+------+------------+-----------------+---------+
+|       120 | Oliveros  | Apple Grace  | G.   | 2009-08-19 | Instructor III  | CICT    |
+|        78 | Alcantara | Gloria       | M.   | 1996-06-19 | Asso. Prof III  | CICT    |
+|       125 | Santos    | Ruth Ann     | G.   | 2005-07-20 | Instructor I    | CICT    |
+|       154 | Montes    | John Dave    | NULL | 2005-09-18 | Asso. Prof II   | COE     |
+|       100 | Dela Cruz | Maine        | G.   | 2008-10-10 | Asso. Prof II   | COED    |
+|       101 | Torres    | Hilton James | G.   | 1999-10-19 | Asst. Prof II   | COED    |
+|       201 | Santos    | John Patrick | G.   | 2003-12-28 | Instructor I    | CMBT    |
+|       222 | Montes    | Harley Joy   | F.   | 2018-09-20 | Asst. Prof I    | CMBT    |
+|       228 | Salvador  | Gerlie       | D.   | 2009-10-10 | Asso. Prof III  | COC     |
+|       111 | Papa      | Harold       | T.   | 2019-10-19 | Instructor II   | COA     |
++-----------+-----------+--------------+------+------------+-----------------+---------+
+10 rows in set (0.000 sec)
+
+MariaDB [ced]> SELECT * FROM tblEmployee WHERE College = "CICT";
++-----------+-----------+-------------+------+------------+-----------------+---------+
+| FacultyID | Surname   | FirstName   | MI   | DateHired  | Rank            | College |
++-----------+-----------+-------------+------+------------+-----------------+---------+
+|       120 | Oliveros  | Apple Grace | G.   | 2009-08-19 | Instructor III  | CICT    |
+|        78 | Alcantara | Gloria      | M.   | 1996-06-19 | Asso. Prof III  | CICT    |
+|       125 | Santos    | Ruth Ann    | G.   | 2005-07-20 | Instructor I    | CICT    |
++-----------+-----------+-------------+------+------------+-----------------+---------+
+3 rows in set (0.002 sec)
+
+MariaDB [ced]> SELECT * FROM tblEmployee WHERE DateHired BETWEEN "2003-01-30" AND "2020-12-31";
++-----------+-----------+--------------+------+------------+----------------+---------+
+| FacultyID | Surname   | FirstName    | MI   | DateHired  | Rank           | College |
++-----------+-----------+--------------+------+------------+----------------+---------+
+|       120 | Oliveros  | Apple Grace  | G.   | 2009-08-19 | Instructor III | CICT    |
+|       125 | Santos    | Ruth Ann     | G.   | 2005-07-20 | Instructor I   | CICT    |
+|       154 | Montes    | John Dave    | NULL | 2005-09-18 | Asso. Prof II  | COE     |
+|       100 | Dela Cruz | Maine        | G.   | 2008-10-10 | Asso. Prof II  | COED    |
+|       201 | Santos    | John Patrick | G.   | 2003-12-28 | Instructor I   | CMBT    |
+|       222 | Montes    | Harley Joy   | F.   | 2018-09-20 | Asst. Prof I   | CMBT    |
+|       228 | Salvador  | Gerlie       | D.   | 2009-10-10 | Asso. Prof III | COC     |
+|       111 | Papa      | Harold       | T.   | 2019-10-19 | Instructor II  | COA     |
++-----------+-----------+--------------+------+------------+----------------+---------+
+8 rows in set (0.001 sec)
+
+MariaDB [ced]> SELECT FirstName FROM tblEmployee WHERE FirstName LIKE "%n%";
++--------------+
+| FirstName    |
++--------------+
+| Ruth Ann     |
+| John Dave    |
+| Maine        |
+| Hilton James |
+| John Patrick |
++--------------+
+5 rows in set (0.002 sec)
+
+MariaDB [ced]> UPDATE tblEmployee SET FirstName = "Gereldine" WHERE FacultyId = 228;
+Query OK, 1 row affected (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [ced]> SELECT * FROM tblEmployee;
++-----------+-----------+--------------+------+------------+-----------------+---------+
+| FacultyID | Surname   | FirstName    | MI   | DateHired  | Rank            | College |
++-----------+-----------+--------------+------+------------+-----------------+---------+
+|       120 | Oliveros  | Apple Grace  | G.   | 2009-08-19 | Instructor III  | CICT    |
+|        78 | Alcantara | Gloria       | M.   | 1996-06-19 | Asso. Prof III  | CICT    |
+|       125 | Santos    | Ruth Ann     | G.   | 2005-07-20 | Instructor I    | CICT    |
+|       154 | Montes    | John Dave    | NULL | 2005-09-18 | Asso. Prof II   | COE     |
+|       100 | Dela Cruz | Maine        | G.   | 2008-10-10 | Asso. Prof II   | COED    |
+|       101 | Torres    | Hilton James | G.   | 1999-10-19 | Asst. Prof II   | COED    |
+|       201 | Santos    | John Patrick | G.   | 2003-12-28 | Instructor I    | CMBT    |
+|       222 | Montes    | Harley Joy   | F.   | 2018-09-20 | Asst. Prof I    | CMBT    |
+|       228 | Salvador  | Gereldine    | D.   | 2009-10-10 | Asso. Prof III  | COC     |
+|       111 | Papa      | Harold       | T.   | 2019-10-19 | Instructor II   | COA     |
++-----------+-----------+--------------+------+------------+-----------------+---------+
+10 rows in set (0.000 sec)
+
+MariaDB [ced]> DELETE FROM tblEmployee WHERE Surname = 'Santos';
+Query OK, 2 rows affected (0.009 sec)
+
+MariaDB [ced]> SELECT * FROM tblEmployee;
++-----------+-----------+--------------+------+------------+-----------------+---------+
+| FacultyID | Surname   | FirstName    | MI   | DateHired  | Rank            | College |
++-----------+-----------+--------------+------+------------+-----------------+---------+
+|       120 | Oliveros  | Apple Grace  | G.   | 2009-08-19 | Instructor III  | CICT    |
+|        78 | Alcantara | Gloria       | M.   | 1996-06-19 | Asso. Prof III  | CICT    |
+|       154 | Montes    | John Dave    | NULL | 2005-09-18 | Asso. Prof II   | COE     |
+|       100 | Dela Cruz | Maine        | G.   | 2008-10-10 | Asso. Prof II   | COED    |
+|       101 | Torres    | Hilton James | G.   | 1999-10-19 | Asst. Prof II   | COED    |
+|       222 | Montes    | Harley Joy   | F.   | 2018-09-20 | Asst. Prof I    | CMBT    |
+|       228 | Salvador  | Gereldine    | D.   | 2009-10-10 | Asso. Prof III  | COC     |
+|       111 | Papa      | Harold       | T.   | 2019-10-19 | Instructor II   | COA     |
++-----------+-----------+--------------+------+------------+-----------------+---------+
+8 rows in set (0.000 sec)
+
+MariaDB [ced]> SELECT * FROM tblEmployee WHERE Rank IN ('Asso. Prof I', 'Asso. Prof II', 'Asso. Prof III', 'Asso. Prof IV');
++-----------+-----------+-----------+------+------------+----------------+---------+
+| FacultyID | Surname   | FirstName | MI   | DateHired  | Rank           | College |
++-----------+-----------+-----------+------+------------+----------------+---------+
+|       154 | Montes    | John Dave | NULL | 2005-09-18 | Asso. Prof II  | COE     |
+|       100 | Dela Cruz | Maine     | G.   | 2008-10-10 | Asso. Prof II  | COED    |
+|        78 | Alcantara | Gloria    | M.   | 1996-06-19 | Asso. Prof III | CICT    |
+|       228 | Salvador  | Gereldine | D.   | 2009-10-10 | Asso. Prof III | COC     |
++-----------+-----------+-----------+------+------------+----------------+---------+
+3 rows in set (0.001 sec)
+
+MariaDB [ced]> Bye
+```
+
+#### SQL Queries
+
+```sql
+--- Task 1
+CREATE DATABASE ced;
+
+USE ced;
+
+--- Task 2
+CREATE TABLE tblEmployee (
+    FacultyID INT(20) NOT NULL,
+    Surname VARCHAR(25),
+    Fname VARCHAR(25),
+    MI CHAR(3),
+    Rank VARCHAR(15),
+    College CHAR(5)
+);
+
+--- Task 3 
+ALTER TABLE tblEmployee ADD COLUMN DateHired Date AFTER MI;
+
+--- Task 4
+ALTER TABLE tblEmployee CHANGE COLUMN Fname FirstName VARCHAR(25);
+
+--- Task 5
+INSERT INTO tblEmployee (FacultyID, Surname, FirstName, MI, DateHired, Rank, College) VALUES
+    (120, 'Oliveros', 'Apple Grace', 'G.', '2009-08-19', 'Instructor III', 'CICT'),
+    (78, 'Alcantara', 'Gloria', 'M.', '1996-06-19', 'Asso. Prof III', 'CICT'),
+    (125, 'Santos', 'Ruth Ann', 'G.', '2005-07-20', 'Instructor I', 'CICT'),
+    (154, 'Montes', 'John Dave', NULL, '2005-09-18', 'Asso. Prof II', 'COE'),
+    (100, 'Dela Cruz', 'Maine', 'G.', '2008-10-10', 'Asso. Prof II', 'COED'),
+    (101, 'Torres', 'Hilton James', 'G.', '1999-10-19', 'Asst. Prof II', 'COED'),
+    (201, 'Santos', 'John Patrick', 'G.', '2003-12-28', 'Instructor I', 'CMBT'),
+    (222, 'Montes', 'Harley Joy', 'F.', '2018-09-20', 'Asst. Prof I', 'CMBT'),
+    (228, 'Salvador', 'Gerlie', 'D.', '2009-10-10', 'Asso. Prof III', 'COC'),
+    (111, 'Papa', 'Harold', 'T.', '2019-10-19', 'Instructor II', 'COA');
+
+--- Query 1
+SELECT * FROM tblEmployee WHERE College = "CICT";
+
+--- Query 2
+SELECT * FROM tblEmployee WHERE DateHired BETWEEN "2003-01-30" AND "2020-12-31";
+
+--- Query 3
+SELECT FirstName FROM tblEmployee WHERE FirstName LIKE "%n%";
+
+--- Query 4
+UPDATE tblEmployee SET FirstName = "Gereldine" WHERE FacultyId = 228;
+
+--- Query 5
+DELETE FROM tblEmployee WHERE Surname = 'Santos';
+
+--- Query 6
+SELECT * FROM tblEmployee WHERE Rank IN ('Asso. Prof I', 'Asso. Prof II', 'Asso. Prof III', 'Asso. Prof IV');
+```

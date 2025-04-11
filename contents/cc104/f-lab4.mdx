@@ -10,6 +10,8 @@ TblOrders(ord_no, purch_amt, ord_date, customer_id, salesman_id)
 
 Based on the attributes listed in the TblOrders table, identify and assign the most appropriate data type for each column.
 
+<div className="bg-background overflow-x-auto rounded-md">
+
 | Field         | Type              | Null  |
 |---------------|-------------------|-------|
 | ord_no        | INT(10)           | NO    |
@@ -18,10 +20,14 @@ Based on the attributes listed in the TblOrders table, identify and assign the m
 | customer_id   | SMALLINT          | YES   |
 | salesman_id   | SMALLINT          | YES   |
 
+</div>
+
 #### Table Record
 
+<div className="bg-background overflow-x-auto rounded-md">
+
 | ord_no | purch_amt | ord_date   | customer_id | salesman_id |
-|--------|-----------|------------|-------------|-------------|
+|:------:|-----------|------------|:-----------:|:-----------:|
 | 70001  | 150.50    | 2012-10-05 | 3005        | 5002        |
 | 70009  | 270.65    | 2012-09-10 | 3001        | 5005        |
 | 70002  | 65.26     | 2012-10-05 | 3002        | 5001        |
@@ -34,6 +40,8 @@ Based on the attributes listed in the TblOrders table, identify and assign the m
 | 70012  | 250.45    | 2012-06-27 | 3008        | 5002        |
 | 70011  | 75.29     | 2012-08-17 | 3003        | 5007        |
 | 70013  | 3045.60   | 2012-04-25 | 3002        | 5001        |
+
+</div>
 
 **Query 1.** Display the total amount of all purchases.
 
@@ -51,68 +59,7 @@ Based on the attributes listed in the TblOrders table, identify and assign the m
 
 **Query 8.** Count the number of orders per order date. (Output: ord_date, total_orders)
 
-#### Queries
-
-```sql
-
--- Create a new database for the orders
-CREATE DATABASE Angulo_C;
-
--- Use the created database
-USE Angulo_C;
-
--- Create the table with the specified structure
-CREATE TABLE TblOrders (
-    ord_no INT(10) NOT NULL,
-    purch_amt DECIMAL(10,2),
-    ord_date DATE,
-    customer_id SMALLINT,
-    salesman_id SMALLINT
-);
-
--- Display the structure of the table
-DESCRIBE TblOrders;
-
--- Insert records into the table
-INSERT INTO TblOrders VALUES
-(70001, 150.50, '2012-10-05', 3005, 5002),
-(70009, 270.65, '2012-09-10', 3001, 5005),
-(70002, 65.26, '2012-10-05', 3002, 5001),
-(70004, 110.50, '2012-08-17', 3009, 5003),
-(70007, 948.50, '2012-09-10', 3005, 5002),
-(70005, 2400.60, '2012-07-27', 3007, 5001),
-(70008, 5760.00, '2012-09-10', 3002, 5001),
-(70010, 1983.43, '2012-10-10', 3004, 5006),
-(70003, 2480.40, '2012-10-10', 3009, 5003),
-(70012, 250.45, '2012-06-27', 3008, 5002),
-(70011, 75.29, '2012-08-17', 3003, 5007),
-(70013, 3045.60, '2012-04-25', 3002, 5001);
-
--- Query 1: Display the total amount of all purchases
-SELECT SUM(purch_amt) AS total_purchases FROM TblOrders;
-
--- Query 2: Show the average purchase amount for all orders
-SELECT AVG(purch_amt) AS avg_purchase_amount FROM TblOrders;
-
--- Query 3: Get the maximum and minimum purchase amounts recorded
-SELECT MAX(purch_amt) AS max_purchase, MIN(purch_amt) AS min_purchase FROM TblOrders;
-
--- Query 4: Count the total number of orders made
-SELECT COUNT(*) AS total_orders FROM TblOrders;
-
--- Query 5: Count the number of distinct customers who made purchases
-SELECT COUNT(DISTINCT customer_id) AS distinct_customers FROM TblOrders;
-
--- Query 6: Display the total purchase amount per customer (Output: customer_id, total_amount)
-SELECT customer_id, SUM(purch_amt) AS total_amount FROM TblOrders GROUP BY customer_id;
-
--- Query 7: Show the average order amount per salesman (Output: salesman_id, avg_amount)
-SELECT salesman_id, AVG(purch_amt) AS avg_amount FROM TblOrders GROUP BY salesman_id;
-
--- Query 8: Count the number of orders per order date (Output: ord_date, total_orders)
-SELECT ord_date, COUNT(*) AS total_orders FROM TblOrders GROUP BY ord_date;
-
-```
+---
 
 #### Output
 
@@ -278,4 +225,69 @@ MariaDB [Angulo_C]> SELECT ord_date, COUNT(*) AS total_orders
 7 rows in set (0.000 sec)
 
 MariaDB [Angulo_C]> bye
+```
+
+---
+
+#### Queries
+
+```sql
+
+-- Create a new database for the orders
+CREATE DATABASE Angulo_C;
+
+-- Use the created database
+USE Angulo_C;
+
+-- Create the table with the specified structure
+CREATE TABLE TblOrders (
+    ord_no INT(10) NOT NULL,
+    purch_amt DECIMAL(10,2),
+    ord_date DATE,
+    customer_id SMALLINT,
+    salesman_id SMALLINT
+);
+
+-- Display the structure of the table
+DESCRIBE TblOrders;
+
+-- Insert records into the table
+INSERT INTO TblOrders VALUES
+(70001, 150.50, '2012-10-05', 3005, 5002),
+(70009, 270.65, '2012-09-10', 3001, 5005),
+(70002, 65.26, '2012-10-05', 3002, 5001),
+(70004, 110.50, '2012-08-17', 3009, 5003),
+(70007, 948.50, '2012-09-10', 3005, 5002),
+(70005, 2400.60, '2012-07-27', 3007, 5001),
+(70008, 5760.00, '2012-09-10', 3002, 5001),
+(70010, 1983.43, '2012-10-10', 3004, 5006),
+(70003, 2480.40, '2012-10-10', 3009, 5003),
+(70012, 250.45, '2012-06-27', 3008, 5002),
+(70011, 75.29, '2012-08-17', 3003, 5007),
+(70013, 3045.60, '2012-04-25', 3002, 5001);
+
+-- Query 1: Display the total amount of all purchases
+SELECT SUM(purch_amt) AS total_purchases FROM TblOrders;
+
+-- Query 2: Show the average purchase amount for all orders
+SELECT AVG(purch_amt) AS avg_purchase_amount FROM TblOrders;
+
+-- Query 3: Get the maximum and minimum purchase amounts recorded
+SELECT MAX(purch_amt) AS max_purchase, MIN(purch_amt) AS min_purchase FROM TblOrders;
+
+-- Query 4: Count the total number of orders made
+SELECT COUNT(*) AS total_orders FROM TblOrders;
+
+-- Query 5: Count the number of distinct customers who made purchases
+SELECT COUNT(DISTINCT customer_id) AS distinct_customers FROM TblOrders;
+
+-- Query 6: Display the total purchase amount per customer (Output: customer_id, total_amount)
+SELECT customer_id, SUM(purch_amt) AS total_amount FROM TblOrders GROUP BY customer_id;
+
+-- Query 7: Show the average order amount per salesman (Output: salesman_id, avg_amount)
+SELECT salesman_id, AVG(purch_amt) AS avg_amount FROM TblOrders GROUP BY salesman_id;
+
+-- Query 8: Count the number of orders per order date (Output: ord_date, total_orders)
+SELECT ord_date, COUNT(*) AS total_orders FROM TblOrders GROUP BY ord_date;
+
 ```

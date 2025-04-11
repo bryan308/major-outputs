@@ -36,12 +36,14 @@ title: Laboratory 3
 </div>
 
 6. Query
-  - Display the faculty details who belong to the college CICT.
-  - Display the faculty details that were hired from 2003-01-30 to 2020-12-31.
-  - Display the name of the faculty that has n in their FirstName.
-  - Change the FirstName of FacultyId 228 to Gereldine.
-  - Delete the record of the faculty that Surname is Santos.
-  - Display the faculty that has a rank of Asso. Prof. 1 to Asso. Prof. IV.
+   + Display the faculty details who belong to the college CICT.
+   + Display the faculty details that were hired from 2003-01-30 to 2020-12-31.
+   + Display the name of the faculty that has `n` in their FirstName.
+   + Change the FirstName of FacultyId 228 to Gereldine.
+   + Delete the record of the faculty whose Surname is Santos. 
+   + Display the faculty that has a rank of Asso. Prof. I to Asso. Prof. IV.
+
+---
 
 #### Output
 
@@ -233,12 +235,13 @@ MariaDB [ced]> Bye
 #### SQL Queries
 
 ```sql
---- Task 1
+-- Task 1: Create a new database
 CREATE DATABASE ced;
 
+-- Use the created database
 USE ced;
 
---- Task 2
+-- Task 2: Create the table with the specified structure
 CREATE TABLE tblEmployee (
     FacultyID INT(20) NOT NULL,
     Surname VARCHAR(25),
@@ -248,40 +251,40 @@ CREATE TABLE tblEmployee (
     College CHAR(5)
 );
 
---- Task 3 
-ALTER TABLE tblEmployee ADD COLUMN DateHired Date AFTER MI;
+-- Task 3: Add a new column named DateHired
+ALTER TABLE tblEmployee ADD COLUMN DateHired DATE AFTER MI;
 
---- Task 4
+-- Task 4: Rename the column Fname to FirstName
 ALTER TABLE tblEmployee CHANGE COLUMN Fname FirstName VARCHAR(25);
 
---- Task 5
+-- Task 5: Insert records into the table
 INSERT INTO tblEmployee (FacultyID, Surname, FirstName, MI, DateHired, Rank, College) VALUES
     (120, 'Oliveros', 'Apple Grace', 'G.', '2009-08-19', 'Instructor III', 'CICT'),
-    (78, 'Alcantara', 'Gloria', 'M.', '1996-06-19', 'Asso. Prof III', 'CICT'),
+    (78, 'Alcantara', 'Gloria', 'M.', '1996-06-19', 'Asso. Prof. III', 'CICT'),
     (125, 'Santos', 'Ruth Ann', 'G.', '2005-07-20', 'Instructor I', 'CICT'),
-    (154, 'Montes', 'John Dave', NULL, '2005-09-18', 'Asso. Prof II', 'COE'),
-    (100, 'Dela Cruz', 'Maine', 'G.', '2008-10-10', 'Asso. Prof II', 'COED'),
-    (101, 'Torres', 'Hilton James', 'G.', '1999-10-19', 'Asst. Prof II', 'COED'),
+    (154, 'Montes', 'John Dave', NULL, '2005-09-18', 'Asso. Prof. II', 'COE'),
+    (100, 'Dela Cruz', 'Maine', 'G.', '2008-10-10', 'Asso. Prof. II', 'COED'),
+    (101, 'Torres', 'Hilton James', 'G.', '1999-10-19', 'Asst. Prof. II', 'COED'),
     (201, 'Santos', 'John Patrick', 'G.', '2003-12-28', 'Instructor I', 'CMBT'),
-    (222, 'Montes', 'Harley Joy', 'F.', '2018-09-20', 'Asst. Prof I', 'CMBT'),
-    (228, 'Salvador', 'Gerlie', 'D.', '2009-10-10', 'Asso. Prof III', 'COC'),
+    (222, 'Montes', 'Harley Joy', 'F.', '2018-09-20', 'Asst. Prof. I', 'CMBT'),
+    (228, 'Salvador', 'Gerlie', 'D.', '2009-10-10', 'Asso. Prof. III', 'COC'),
     (111, 'Papa', 'Harold', 'T.', '2019-10-19', 'Instructor II', 'COA');
 
---- Query 1
+-- Query 1: Display the faculty details who belong to the college CICT
 SELECT * FROM tblEmployee WHERE College = "CICT";
 
---- Query 2
+-- Query 2: Display the faculty details that were hired from 2003-01-30 to 2020-12-31
 SELECT * FROM tblEmployee WHERE DateHired BETWEEN "2003-01-30" AND "2020-12-31";
 
---- Query 3
+-- Query 3: Display the name of the faculty that has 'n' in their FirstName
 SELECT FirstName FROM tblEmployee WHERE FirstName LIKE "%n%";
 
---- Query 4
-UPDATE tblEmployee SET FirstName = "Gereldine" WHERE FacultyId = 228;
+-- Query 4: Change the FirstName of FacultyId 228 to Gereldine
+UPDATE tblEmployee SET FirstName = "Gereldine" WHERE FacultyID = 228;
 
---- Query 5
+-- Query 5: Delete the record of the faculty whose Surname is Santos
 DELETE FROM tblEmployee WHERE Surname = 'Santos';
 
---- Query 6
-SELECT * FROM tblEmployee WHERE Rank IN ('Asso. Prof I', 'Asso. Prof II', 'Asso. Prof III', 'Asso. Prof IV');
+-- Query 6: Display the faculty that has a rank of Asso. Prof. I to Asso. Prof. IV
+SELECT * FROM tblEmployee WHERE Rank IN ('Asso. Prof. I', 'Asso. Prof. II', 'Asso. Prof. III', 'Asso. Prof. IV');
 ```

@@ -1,0 +1,250 @@
+---
+title: Case 1
+---
+
+#### USD ⇄ PHP Converter
+
+A simple Java console program for converting between USD and PHP.
+- **Admin** can set the exchange rate (saved in `rates.txt`).
+- **User** can convert currencies and view conversion history (saved in `currency.txt`).
+- The program uses file I/O for persistence and supports basic input validation.
+
+---
+
+#### File Structure
+
+<Files className="mt-4">
+  <Folder name="Case1" defaultOpen>
+    <Folder name="build" />
+    <Folder name="nbproject">
+      <File name="build-impl.xml" />
+      <File name="genfiles.properties" />
+      <Folder name="private" />
+      <File name="project.properties" />
+      <File name="project.xml" />
+    </Folder>
+    <Folder name="src" defaultOpen>
+      <Folder name="case1" defaultOpen>
+        <File name="Case1.java" />
+      </Folder>
+    </Folder>
+    <Folder name="test" />
+    <File name=".gitignore" />
+    <File name="build.xml" />
+    <File name="currency.txt" />
+    <File name="manifest.mf" />
+    <File name="rates.txt" />
+    <File name="script.txt" />
+  </Folder>
+</Files>
+
+---
+
+#### Source Code
+
+```java
+package case1;
+
+import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+/**
+ * A simple currency converter program that allows users to convert between USD
+ * and PHP.
+ * The program supports two roles: admin and user.
+ * - Admin can set the exchange rate between USD and PHP.
+ * - User can perform currency conversions and view the conversion history.
+ */
+public class Case1 {
+
+    public static void main(String[] args) {
+        // File paths for storing exchange rate and conversion history
+        final String RATE_PATH = "rates.txt";
+        final String HISTORY_PATH = "currency.txt";
+
+        // Scanner for user input
+        try (Scanner scanner = new Scanner(System.in)) {
+            while (true) {
+                // Display the main menu
+                System.out.println("\n============= Currency Converter =======admin======");
+                System.out.print("Are you an 'admin', 'user', or do you want to 'exit'?\n> ");
+                String role = scanner.nextLine().trim().toLowerCase();
+
+                // Exit the program if the user chooses "exit"
+                if (role.equals("exit")) {
+                    System.out.println("Exiting program. Goodbye!");
+                    break;
+                }
+
+                // Handle operations based on the user's role
+                switch (role) {
+                    case "admin":
+                        handleAdmin(scanner, RATE_PATH); // Admin functionality
+                        break;
+                    case "user":
+                        handleUser(scanner, RATE_PATH, HISTORY_PATH); // User functionality
+                        break;
+                    default:
+                        System.out.println("Invalid role. Please type 'admin', 'user', or 'exit'.");
+                        break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Handles admin functionality for setting a new exchange rate.
+     * 
+     * @param scanner   Scanner object for user input
+     * @param RATE_PATH Path to the file where the exchange rate is stored
+     */
+    private static void handleAdmin(Scanner scanner, String RATE_PATH) {
+        try {
+            System.out.println("\n==============================================\n");
+            System.out.print("Enter new Dollar to Peso rate: ");
+            String input = scanner.nextLine();
+            double newRate = Double.parseDouble(input); // Parse the new exchange rate
+
+            // Validate the new rate
+            if (newRate <= 0) {
+                System.out.println("Invalid rate. Please enter a positive number.");
+                return;
+            }
+
+            // Get the current date and time
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String timestamp = now.format(formatter);
+
+            // Save the new rate and timestamp to the file
+            try (BufferedWriter rateWriter = new BufferedWriter(new FileWriter(RATE_PATH, true))) {
+                rateWriter.write(newRate + "\n" + timestamp + "\n");
+            }
+
+            System.out.println("Rate updated to " + newRate + " on " + timestamp);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid numeric input. Please enter a valid number.");
+        } catch (IOException e) {
+            System.out.println("Error writing to rate file: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Handles user functionality for converting USD to PHP or vice versa.
+     * 
+     * @param scanner      Scanner object for user input
+     * @param RATE_PATH    Path to the file where the exchange rate is stored
+     * @param HISTORY_PATH Path to the file where conversion history is stored
+     */
+    private static void handleUser(Scanner scanner, String RATE_PATH, String HISTORY_PATH) {
+        File rateFile = new File(RATE_PATH);
+
+        // Check if the rate file exists
+        if (!rateFile.exists()) {
+            System.out.println("Rate file not found. Ask admin to set the rate first.");
+            return;
+        }
+
+        try {
+            // Retrieve the exchange rate from the file
+            double rate = getExchangeRate(RATE_PATH);
+            String lastUpdated;
+
+            // Read the last updated timestamp from the file
+            try (BufferedReader rateReader = new BufferedReader(new FileReader(RATE_PATH))) {
+                rateReader.readLine(); // Skip the rate line
+                lastUpdated = rateReader.readLine();
+            }
+
+            if (lastUpdated == null) {
+                System.out.println("Rate file is corrupted. Ask admin to reset the rate.");
+                return;
+            }
+
+            // Display the current exchange rate and last updated timestamp
+            System.out.println("\n==============================================\n");
+            System.out.println("Last rate update: " + lastUpdated);
+            System.out.println("Current rate: 1 USD = " + rate + " PHP\n");
+
+            // Prompt the user to choose the input type (USD or PHP)
+            System.out.print("Do you want to enter amount in 'USD' or 'PHP'? ");
+            String choice = scanner.nextLine().trim().toLowerCase();
+
+            double usd = 0, php = 0;
+            DecimalFormat df = new DecimalFormat("#,##0.00");
+
+            if (choice.equals("usd")) {
+                // Prompt the user for the amount in USD
+                System.out.print("Enter amount in USD: ");
+                while (!scanner.hasNextDouble()) {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                    scanner.next(); // Clear invalid input
+                }
+                usd = scanner.nextDouble();
+                scanner.nextLine(); // Consume newline
+
+                // Validate the amount
+                if (usd <= 0) {
+                    System.out.println("Invalid amount. Please enter a positive number.");
+                    return;
+                }
+
+                php = usd * rate; // Convert USD to PHP
+                System.out.printf("PHP %s = $%s%n", df.format(php), df.format(usd));
+            } else if (choice.equals("php")) {
+                // Prompt the user for the amount in PHP
+                System.out.print("Enter amount in PHP: ");
+                while (!scanner.hasNextDouble()) {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                    scanner.next(); // Clear invalid input
+                }
+                php = scanner.nextDouble();
+                scanner.nextLine(); // Consume newline
+
+                // Validate the amount
+                if (php <= 0) {
+                    System.out.println("Invalid amount. Please enter a positive number.");
+                    return;
+                }
+
+                usd = php / rate; // Convert PHP to USD
+                System.out.printf("PHP %s = $%s%n", df.format(php), df.format(usd));
+            } else {
+                System.out.println("Invalid choice. Please restart and choose 'USD' or 'PHP'.");
+                return;
+            }
+
+            // Save the conversion history to the file
+            try (BufferedWriter historyWriter = new BufferedWriter(new FileWriter(HISTORY_PATH, true))) {
+                String log = lastUpdated + " | $" + df.format(usd) + " = PHP " + df.format(php) + " @ rate: " + rate
+                        + "\n";
+                historyWriter.write(log);
+            }
+
+            System.out.println("\nConversion saved to currency.txt");
+
+        } catch (NumberFormatException e) {
+            System.out.println("Rate file contains invalid data. Ask admin to reset the rate.");
+        } catch (IOException e) {
+            System.out.println(
+                    "Error: Unable to read the rate file. Please ensure the file exists and is not corrupted.");
+        }
+    }
+
+    /**
+     * Retrieves the exchange rate from the specified file.
+     * 
+     * @param ratePath Path to the file where the exchange rate is stored
+     * @return The exchange rate as a double
+     * @throws IOException           If an error occurs while reading the file
+     * @throws NumberFormatException If the file contains invalid data
+     */
+    private static double getExchangeRate(String ratePath) throws IOException, NumberFormatException {
+        try (BufferedReader rateReader = new BufferedReader(new FileReader(ratePath))) {
+            return Double.parseDouble(rateReader.readLine());
+        }
+    }
+}

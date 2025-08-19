@@ -5,7 +5,7 @@ import rehypePresetMinify from "rehype-preset-minify"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
-// import { rehypeCode } from "fumadocs-core/mdx-plugins"
+import { rehypeCode, remarkStructure } from "fumadocs-core/mdx-plugins"
 
 const createCollection = (name: string, directory: string, plugins = []) => {
   return defineCollection({
@@ -16,12 +16,13 @@ const createCollection = (name: string, directory: string, plugins = []) => {
       title: z.string(),
       description: z.string().optional(),
       draft: z.boolean().optional(),
+      date: z.date().optional(),
     }),
     transform: async (document, context) => {
       const mdx = await compileMDX(context, document, {
-        remarkPlugins: [remarkGfm],
+        remarkPlugins: [remarkGfm, remarkStructure],
         rehypePlugins: [
-          // rehypeCode,
+          rehypeCode,
           rehypeSlug,
           [
             rehypeAutolinkHeadings,
@@ -45,14 +46,20 @@ const createCollection = (name: string, directory: string, plugins = []) => {
   })
 }
 
-const itwst01 = createCollection("itwst01", "contents/itwst01")
-const itwst02 = createCollection("itwst02", "contents/itwst02")
-const itpf01 = createCollection("itpf01", "contents/itpf01")
-const itpf02 = createCollection("itpf02", "contents/itpf02")
-const cc104 = createCollection("cc104", "contents/cc104")
-const cc105 = createCollection("cc105", "contents/cc105")
-const ithci01 = createCollection("ithci01", "contents/ithci01")
+const collectionConfigs = [
+  ["itwst01", "contents/itwst01"],
+  ["itwst02", "contents/itwst02"],
+  ["itpf01", "contents/itpf01"],
+  ["itpf02", "contents/itpf02"],
+  ["cc104", "contents/cc104"],
+  ["cc105", "contents/cc105"],
+  ["ithci01", "contents/ithci01"],
+  ["itipt01", "contents/itipt01"],
+  ["itipt02", "contents/itipt02"],
+]
+
+const collections = collectionConfigs.map(([name, dir]) => createCollection(name, dir))
 
 export default defineConfig({
-  collections: [itwst01, itwst02, itpf01, itpf02, cc104, cc105, ithci01],
+  collections,
 })

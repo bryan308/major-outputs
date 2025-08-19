@@ -3,6 +3,8 @@ import {
   allCc104s,
   allCc105s,
   allIthci01s,
+  allItipt01s,
+  allItipt02s,
   allItpf01s,
   allItpf02s,
   allItwst01s,
@@ -43,6 +45,8 @@ type SubjectKeys =
   | "cc104"
   | "cc105"
   | "ithci01"
+  | "itipt01"
+  | "itipt02"
 
 const subjectData: Record<SubjectKeys, Lab[]> = {
   itwst01: allItwst01s,
@@ -52,6 +56,8 @@ const subjectData: Record<SubjectKeys, Lab[]> = {
   cc104: allCc104s,
   cc105: allCc105s,
   ithci01: allIthci01s,
+  itipt01: allItipt01s,
+  itipt02: allItipt02s,
 }
 
 export interface PageProps {

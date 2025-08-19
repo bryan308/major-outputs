@@ -6,6 +6,8 @@ import {
   allItpf02s,
   allItwst01s,
   allItwst02s,
+  allItipt01s,
+  allItipt02s
 } from "content-collections"
 import { Plus } from "lucide-react"
 import { Metadata } from "next"
@@ -37,6 +39,8 @@ const subjectData: SubjectData = {
   cc104: allCc104s,
   cc105: allCc105s,
   ithci01: allIthci01s,
+  itipt01: allItipt01s,
+  itipt02: allItipt02s,
 }
 
 export default async function SubjectPage({ params }: PageProps) {

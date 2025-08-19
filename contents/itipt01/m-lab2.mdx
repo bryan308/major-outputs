@@ -1,0 +1,98 @@
+---
+title: Laboratory 2
+---
+
+### Instructions:
+
+1. Create a global variable total_employees initialized to 0;
+2. Define the function compute_payroll() with parameters:
+    - Inside the function: 
+      1. Assume `daily_rate` is `monthly_rate / 22` (22 working days per month). 
+      2. Compute `deduction_absences = daily_rate * absent_days` 
+      3. Compute `gross_pay = monthly_rate - deduction_absences` 
+      4. Compute `tax = gross_pay * tax_rate` 
+      5. Compute `total_deductions = tax + sss + philhealth + pagibig` 
+      6. Compute `net_pay = gross_pay - total_deductions` 
+      7. Print the summary 
+      8. Use `round()` to format all amounts to 2 decimal places
+3. Increment `total_employees` in a separate function.
+4. Call `increment_employee_count()` using global.
+5. Call the functions for at least 2 employees, using different tax rates.
+
+---
+
+### Code
+
+```python title="lab2.py" lineNumbers
+total_employees = 0
+
+# Function to increment employee count
+def increment_employee_count():
+    global total_employees
+    total_employees += 1
+
+def compute_payroll(name, monthly_rate, absent_days, tax_rate = 0.10, sss = 500, philhealth = 300, pagibig = 200):
+  daily_rate = monthly_rate / 22 # 22 working days in a month
+  deduction_absences = daily_rate * absent_days
+  gross_pay = monthly_rate - deduction_absences
+  tax = gross_pay * tax_rate
+  total_deductions = tax + sss + philhealth + pagibig
+  net_pay = gross_pay - total_deductions
+
+  print(f"Employee: {name}")
+  print(f"Monthly Rate: ₱{round(monthly_rate, 2)}")
+  print(f"Absences: {absent_days} day(s) \n")
+  print(f"Gross Pay: ₱{round(gross_pay, 2)}\n")
+  print("Deductions:")
+  print(f"Tax ({int(tax_rate * 100)}%): ₱{round(tax, 2)}")
+  print(f"SSS: ₱{round(sss, 2)}")
+  print(f"PhilHealth: ₱{round(philhealth, 2)}")
+  print(f"Pag-IBIG: ₱{round(pagibig, 2)}")
+  print(f"Total Deductions: ₱{round(total_deductions, 2)}\n")
+  print(f"Net Pay: ₱{round(net_pay, 2)}\n")
+
+  increment_employee_count()
+
+compute_payroll("Ronaldin Bauat", 22000.00, 2, 0.10)
+compute_payroll("Melgine Marquez", 24000.00, 1, 0.08)
+
+print(f"Total Employees Processed: {total_employees}")
+```
+
+---
+
+### Sample Output
+
+```console
+Employee: Ronaldin Bauat
+Monthly Rate: ₱22000.0
+Absences: 2 day(s) 
+
+Gross Pay: ₱20000.0
+
+Deductions:
+Tax (10%): ₱2000.0
+SSS: ₱500
+PhilHealth: ₱300
+Pag-IBIG: ₱200
+Total Deductions: ₱3000.0
+
+Net Pay: ₱17000.0
+
+Employee: Melgine Marquez
+Monthly Rate: ₱24000.0
+Absences: 1 day(s) 
+
+Gross Pay: ₱22909.09
+
+Deductions:
+Tax (8%): ₱1832.73
+SSS: ₱500
+PhilHealth: ₱300
+Pag-IBIG: ₱200
+Total Deductions: ₱2832.73
+
+Net Pay: ₱20076.36
+
+Total Employees Processed: 2
+```

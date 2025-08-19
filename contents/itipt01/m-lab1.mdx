@@ -1,0 +1,89 @@
+---
+title: Laboratory 1
+draft: false
+---
+
+### Input Requirements
+
+- Full Name
+- Age
+- Grades in 3 Subjects (input as a list)
+- Enrolled Courses (use a tuple: ex. ("Python", "Math", "AI"))
+
+### Eligibility Criteria
+
+- Average grade must >= 85
+- Age must be between 18 and 25
+- Must be enrolled in at least one of the required courses: `{"Python", "Math", "AI"}`
+
+### Processing
+
+- Calculate average using list of Grades
+- Check for course match using set intersection
+- Store all student info in a dictionary
+- Use while loop to allow checking multiple students
+
+### Output
+
+- Display student details and scholarship eligibility message
+
+---
+
+### Code
+
+```python title="lab1.py" lineNumbers
+required_courses = {"Python", "AI", "Data Science"}
+
+while True:
+    name = str(input("Name: "))
+    age = int(input("Age: "))
+    grades = [float(input(f"Enter grade {i+1}: ")) for i in range(3)]
+    enrolled = tuple(input("Enter a course enrolled (type 'done' to finish): ") for i in range(3))
+
+    average = round(sum(grades) / len(grades), 2)
+    eligible_courses = set(enrolled).intersection(set(required_courses))
+
+    student = {
+        "Name": name,
+        "Age": age,
+        "Average": average,
+        "Courses": enrolled,
+    }
+
+    print("\nStudent Record:")
+    for k, v in student.items():
+        print(f"{k.capitalize()}: {v}")
+
+    if average >= 85 and 18 <= age <= 25 and len(eligible_courses) >= 1:
+        print("Eligible for scholarship.")
+    else:
+        print("Not eligible for scholarship.")
+
+    again = input("\nCheck another student? (yes/no): ")
+    if again.lower() != "yes":
+        break
+```
+
+---
+
+### Sample Output
+
+```console
+Name: Cedric Angulo
+Age: 21
+Enter grade 1: 80
+Enter grade 2: 96
+Enter grade 3: 95
+Enter a course enrolled (type 'done' to finish): Python
+Enter a course enrolled (type 'done' to finish): AI
+Enter a course enrolled (type 'done' to finish): Data Science
+
+Student Record:
+Name: Cedric Angulo
+Age: 21
+Average: 90.33
+Courses: ('Python', 'AI', 'Data Science')
+Eligible for scholarship.
+
+Check another student? (yes/no): no
+```

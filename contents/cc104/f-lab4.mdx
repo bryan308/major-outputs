@@ -2,11 +2,11 @@
 title: Laboratory 4
 ---
 
-#### Table Structure
+### Table Structure:
 
 TblOrders(ord_no, purch_amt, ord_date, customer_id, salesman_id)
 
-#### Instruction
+### Instruction
 
 Based on the attributes listed in the TblOrders table, identify and assign the most appropriate data type for each column.
 
@@ -22,48 +22,11 @@ Based on the attributes listed in the TblOrders table, identify and assign the m
 
 </div>
 
-#### Table Record
-
-<div className="bg-background overflow-x-auto rounded-md">
-
-| ord_no | purch_amt | ord_date   | customer_id | salesman_id |
-|:------:|-----------|------------|:-----------:|:-----------:|
-| 70001  | 150.50    | 2012-10-05 | 3005        | 5002        |
-| 70009  | 270.65    | 2012-09-10 | 3001        | 5005        |
-| 70002  | 65.26     | 2012-10-05 | 3002        | 5001        |
-| 70004  | 110.50    | 2012-08-17 | 3009        | 5003        |
-| 70007  | 948.50    | 2012-09-10 | 3005        | 5002        |
-| 70005  | 2400.60   | 2012-07-27 | 3007        | 5001        |
-| 70008  | 5760.00   | 2012-09-10 | 3002        | 5001        |
-| 70010  | 1983.43   | 2012-10-10 | 3004        | 5006        |
-| 70003  | 2480.40   | 2012-10-10 | 3009        | 5003        |
-| 70012  | 250.45    | 2012-06-27 | 3008        | 5002        |
-| 70011  | 75.29     | 2012-08-17 | 3003        | 5007        |
-| 70013  | 3045.60   | 2012-04-25 | 3002        | 5001        |
-
-</div>
-
-**Query 1.** Display the total amount of all purchases.
-
-**Query 2.** Show the average purchase amount for all orders.
-
-**Query 3.** Get the maximum and minimum purchase amounts recorded.
-
-**Query 4.** Count the total number of orders made.
-
-**Query 5.** Count the number of distinct customers who made purchases.
-
-**Query 6.** Display the total purchase amount per customer. (Output: customer_id, total_amount)
-
-**Query 7.** Show the average order amount per salesman. (Output: salesman_id, avg_amount)
-
-**Query 8.** Count the number of orders per order date. (Output: ord_date, total_orders)
-
 ---
 
-#### Output
+### Output
 
-```terminal
+```console
 Setting environment for using XAMPP for Windows.
 CEDRIC@DESKTOP-0G7VTBI c:\xampp
 # mysql -u root -p
@@ -229,10 +192,9 @@ MariaDB [Angulo_C]> bye
 
 ---
 
-#### Queries
+### Queries
 
 ```sql
-
 -- Create a new database for the orders
 CREATE DATABASE Angulo_C;
 
@@ -289,5 +251,4 @@ SELECT salesman_id, AVG(purch_amt) AS avg_amount FROM TblOrders GROUP BY salesma
 
 -- Query 8: Count the number of orders per order date (Output: ord_date, total_orders)
 SELECT ord_date, COUNT(*) AS total_orders FROM TblOrders GROUP BY ord_date;
-
 ```

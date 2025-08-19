@@ -2,6 +2,8 @@
 title: Laboratory 3
 ---
 
+### Instructions:
+
 1. Create a Database, the database name is your nickname.
 2. Create a Table with this structure with table name tblEmployee:
 
@@ -36,18 +38,18 @@ title: Laboratory 3
 </div>
 
 6. Query
-   + Display the faculty details who belong to the college CICT.
-   + Display the faculty details that were hired from 2003-01-30 to 2020-12-31.
-   + Display the name of the faculty that has `n` in their FirstName.
-   + Change the FirstName of FacultyId 228 to Gereldine.
-   + Delete the record of the faculty whose Surname is Santos. 
-   + Display the faculty that has a rank of Asso. Prof. I to Asso. Prof. IV.
++ Display the faculty details who belong to the college CICT.
++ Display the faculty details that were hired from 2003-01-30 to 2020-12-31.
++ Display the name of the faculty that has `n` in their FirstName.
++ Change the FirstName of FacultyId 228 to Gereldine.
++ Delete the record of the faculty whose Surname is Santos. 
++ Display the faculty that has a rank of Asso. Prof. I to Asso. Prof. IV.
 
 ---
 
-#### Output
+### Output
 
-```terminal
+```console
 Setting environment for using XAMPP for Windows.
 CEDRIC@DESKTOP-0G7VTBI c:\xampp
 # cd mysql/bin
@@ -232,7 +234,9 @@ MariaDB [ced]> SELECT * FROM tblEmployee WHERE Rank IN ('Asso. Prof I', 'Asso. P
 MariaDB [ced]> Bye
 ```
 
-#### SQL Queries
+---
+
+### SQL Queries
 
 ```sql
 -- Task 1: Create a new database

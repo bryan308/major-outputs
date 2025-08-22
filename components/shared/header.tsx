@@ -16,7 +16,7 @@ export const Header: FC = () => {
         </Link>{" "}
         <span className="text-muted-foreground">|</span>
         <Link
-          href="https://github.com/bryan308"
+          href="https://github.com/cedricangulo"
           target="_blank"
           rel="noreferrer"
         >
